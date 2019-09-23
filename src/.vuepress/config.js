@@ -10,7 +10,7 @@ module.exports = {
     'vuepress-plugin-click',
     'vuepress-plugin-cat',
     ['@vuepress/back-to-top', false],
-    require('./plugins/ToTopRocket')
+    'vuepress-plugin-rocket',
   ],
   theme: 'meteorlxy',
   // 主题配置

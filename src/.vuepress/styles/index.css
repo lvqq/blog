@@ -32,3 +32,9 @@
 .posts-list-item .post-title:hover {
   transform: translateX(20px) 
 }
+
+.info-card .info-card-header img.info-avatar {
+  width: 80px!important;
+  height: 80px!important;
+  transform: translateY(110px)!important;
+}
