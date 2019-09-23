@@ -3,7 +3,7 @@ module.exports = {
   title: 'Cl2\'s blog',
   description: 'Cl2\'s blog',
   head: [
-    ['link', { rel: 'icon', href: '/blogs/img/head.png' }],
+    ['link', { rel: 'icon', href: '/img/head.png' }],
     ['link', { rel: 'stylesheet', href: 'https://at.alicdn.com/t/font_952822_mcknn5s1a2l.css'}],
   ],
   plugins: [
@@ -45,7 +45,7 @@ module.exports = {
 
       // 头像
       // 设置为外部链接
-      avatar: '/img/head.png',
+      avatar: '/blogs/img/head.png',
       
 
       // 社交平台帐号信息
