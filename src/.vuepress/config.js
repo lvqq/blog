@@ -11,6 +11,9 @@ module.exports = {
     'vuepress-plugin-cat',
     ['@vuepress/back-to-top', false],
     'vuepress-plugin-rocket',
+    ['vuepress-plugin-zooming', {
+      selector: '.content :not(a) img'
+    }]
   ],
   theme: 'meteorlxy',
   // 主题配置
@@ -88,7 +91,7 @@ module.exports = {
       poweredByTheme: false,
 
       // 添加自定义 footer (支持 HTML)
-      custom: 'Copyright © 2017-2019 Cl2 | 鄂ICP备18005280号',
+      custom: '<a style="color: #666;" href="https://old.nicksonlvqq.cn" target="_blank">旧版入口</a> | Copyright © 2017-2019 <a href="https://www.nicksonlvqq.cn/">Cl2</a> | 鄂ICP备18005280号',
     },
 
     // 是否显示文章的最近更新时间
@@ -98,6 +101,7 @@ module.exports = {
     nav: [
       { text: '首页', link: '/', exact: true },
       { text: '文章', link: '/posts/', exact: false },
+      { text: '关于', link: '/about/', exact: false },
     ],
 
     // 评论配置，参考下方 [页面评论] 章节

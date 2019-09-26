@@ -7232,9 +7232,9 @@ vuepress-plugin-nprogress@^1.1.0:
     nprogress "^0.2.0"
 
 vuepress-plugin-rocket@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/vuepress-plugin-rocket/-/vuepress-plugin-rocket-1.0.1.tgz#c772ab9f9209184bf495ef61533d239b3ebbba61"
-  integrity sha512-7iE2gdOC2w6rKjrKd7vf84EPNL24i1l3aiSRzBvnErdY64NN/H7/CUZxgSrbLFODOW5kGH1eVIVN9w1WvDdP1A==
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/vuepress-plugin-rocket/-/vuepress-plugin-rocket-1.0.2.tgz#5f030e7eef1228fa0bc0c47608a7f2bc09a2246e"
+  integrity sha512-GnaE8bQyDhx6ccThZ/wMP2DLn11vLW3DSGVd47a/Jp273XvKTY3mOfWR/tDYjDDmEAhZOeR4blWyOTciIVhUJA==
 
 vuepress-plugin-smooth-scroll@^0.0.3:
   version "0.0.3"

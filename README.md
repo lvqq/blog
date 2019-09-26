@@ -7,5 +7,6 @@
 - theme-meteorlxy
 
 ## about
-- [vuepress-plugin-click](https://github.com/lvqq/vuepress-plugin-click)
-- [vuepress-plugin-rocket](https://github.com/lvqq/vuepress-plugin-rocket)
+vuepress plugin:
+- click💖:[vuepress-plugin-click](https://github.com/lvqq/vuepress-plugin-click)
+- back-to-top🚀:[vuepress-plugin-rocket](https://github.com/lvqq/vuepress-plugin-rocket)
