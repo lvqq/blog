@@ -57,32 +57,32 @@ export default {
         {
           name: "Jooger",
           href: "https://jooger.me",
-          head: "https://static.jooger.me/img/common/avatar.png"
+          head: "https://img.nicksonlvqq.cn/friends/jooger.png"
         },
         {
           name: "青春博客",
           href: "http://loveteemo.com",
-          head: "http://loveteemo.com/favicon.ico"
+          head: "https://img.nicksonlvqq.cn/friends/loveteemo.png"
         },
         {
           name: "王小帅&江小美",
           href: "https://www.tianluogz.com",
-          head: "https://www.tianluogz.com/static/index/default/images/logo.png"
+          head: "https://img.nicksonlvqq.cn/friends/tianluogz.png"
         },
         {
           name: "Sanshi-Blog",
           href: "http://www.sanshi30.cn/",
-          head: "http://www.sanshi30.cn/favicon.ico"
+          head: "https://img.nicksonlvqq.cn/friends/sanshi30.png"
         },
         {
           name: "花花与风",
           href: "http://www.huahuayufeng.com/",
-          head: "http://www.huahuayufeng.com/static/favicon.ico"
+          head: "https://img.nicksonlvqq.cn/friends/huahuayufeng.png"
         },
         {
           name: "梦魇小栈",
           href: "https://blog.ihoey.com",
-          head: "https://blog.ihoey.com/avatar.png"
+          head: "https://img.nicksonlvqq.cn/friends/ihoey.png"
         },
       ]
     };
