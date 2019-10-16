@@ -38,3 +38,8 @@
   height: 80px!important;
   transform: translateY(110px)!important;
 }
+
+.content table {
+  display: block;
+  overflow-x: scroll;
+}

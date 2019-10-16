@@ -164,7 +164,7 @@ function cloneDeep(data) {
   if(typeof data !== 'object') return data
   const retVal = Array.isArray(data) ? [] : {}
   for(let key in data) {
-    retVal[key] = deepClone(data[key])
+    retVal[key] = cloneDeep(data[key])
   }
   return retVal
 }
@@ -346,7 +346,7 @@ const data = {
   b: temp,
 }
 const dataJson = JSON.parse(JSON.stringify(data))
-const dataClone = deepClone(data)
+const dataClone = cloneDeep(data)
 ```
 
 验证一下引用关系：
@@ -411,7 +411,7 @@ const data = {
 	a: temp,
   b: temp,
 }
-const dataClone = deepClone(data)
+const dataClone = cloneDeep(data)
 
 const obj = {}
 obj.obj = obj
@@ -554,5 +554,5 @@ function cloneDeep(data) {
 
 - [MDN - Symbol](https://developer.mozilla.org/zh-CN/docs/Glossary/Symbol) 
 - [MDN - WeakMap](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/WeakMap) 
-- [loadsh/deepClone](https://github.com/lodash/lodash/blob/master/.internal/baseClone.js) 
+- [loadsh/cloneDeep](https://github.com/lodash/lodash/blob/master/.internal/baseClone.js) 
 - 完整的示例和测试代码：[github/lvqq/cloneDeep](https://github.com/lvqq/Demos/tree/master/cloneDeep)
