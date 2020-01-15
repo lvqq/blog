@@ -1,7 +1,7 @@
 module.exports = {
   base: '/blogs/',
-  title: 'Cl2\'s blog',
-  description: 'Cl2\'s blog',
+  title: 'chlorine\'s blog',
+  description: 'chlorine\'s blog',
   head: [
     ['link', { rel: 'icon', href: '/img/head.png' }],
     ['link', { rel: 'stylesheet', href: 'https://at.alicdn.com/t/font_952822_mcknn5s1a2l.css'}],
@@ -24,13 +24,13 @@ module.exports = {
     // 个人信息（没有或不想设置的，删掉对应字段即可）
     personalInfo: {
       // 昵称
-      nickname: 'Cl2',
+      nickname: 'chlorine',
 
       // 个人简介
       description: `
-        <p class="side-desc">May you live the way you like</p>
-        <p class="side-desc"><i class="iconfont icon-yonghu" style="color:rgb(22, 155, 250)"></i> 前端开发</p>
-        <p class="side-desc"><i class="iconfont icon-aixin1" style="color:rgb(244, 110, 101)"></i> Coding、Tech、Reading</p>
+        <p class="side-desc side-desc-word">sometimes ever, sometimes never</p>
+        <p class="side-desc"><i class="iconfont icon-yonghu" style="color:rgb(22, 155, 250)"></i> web</p>
+        <p class="side-desc"><i class="iconfont icon-aixin1" style="color:rgb(244, 110, 101)"></i> coding、running、reading</p>
         <div class="side-contacts">
             <a href="https://github.com/lvqq" title="GitHub" target="_blank"><i class="iconfont icon-github" style="color: rgb(148, 138, 236)"></i></a>
             <a href="https://www.yuque.com/cl222/blogs" title="语雀" target="_blank"><i class="iconfont icon-yuque" style="color: rgb(49, 204, 121)"></i></a>
@@ -91,7 +91,7 @@ module.exports = {
       poweredByTheme: false,
 
       // 添加自定义 footer (支持 HTML)
-      custom: '<a style="color: #666;" href="https://old.nicksonlvqq.cn" target="_blank">旧版入口</a> | Copyright © 2017-2019 <a href="https://www.nicksonlvqq.cn/">Cl2</a> | 鄂ICP备18005280号',
+      custom: '<a style="color: #666;" href="https://old.nicksonlvqq.cn" target="_blank">旧版入口</a> | Copyright © 2017-2020 <a href="https://www.nicksonlvqq.cn/">chlorine</a> | 鄂ICP备18005280号',
     },
 
     // 是否显示文章的最近更新时间
