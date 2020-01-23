@@ -39,6 +39,7 @@
   margin: 1.8rem 0;
   transition: all 0.7s ease-out!important
 }
+
 @media (min-width: 959px) {
   .posts-list-item .post-title:hover {
     transform: translateX(20px) 

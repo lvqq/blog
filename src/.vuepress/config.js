@@ -4,7 +4,7 @@ module.exports = {
   description: 'chlorine\'s blog',
   head: [
     ['link', { rel: 'icon', href: '/img/head.png' }],
-    ['link', { rel: 'stylesheet', href: 'https://at.alicdn.com/t/font_952822_mcknn5s1a2l.css'}],
+    ['link', { rel: 'stylesheet', href: 'https://at.alicdn.com/t/font_952822_eipr4f6r8la.css'}],
   ],
   plugins: [
     'vuepress-plugin-click',
@@ -36,6 +36,7 @@ module.exports = {
             <a href="https://www.yuque.com/cl222/blogs" title="语雀" target="_blank"><i class="iconfont icon-yuque" style="color: rgb(49, 204, 121)"></i></a>
             <a href="https://juejin.im/user/5c112987e51d456f47678b0b/posts" title="掘金" target="_blank"><i class="iconfont icon-juejin" style="color: rgb(0, 108, 255)"></i></a>
             <a href="https://www.jianshu.com/u/a50b09f94d97" title="简书" target="_blank"><i class="iconfont icon-jianshu" style="color: rgb(241, 65, 42)"></i></a>
+            <a href="https://segmentfault.com/blog/chlorine" title="segmentfault" target="_blank"><i class="iconfont icon-segmentfault" style="color: rgb(67, 151, 102)"></i></a>
             <a href="mailto:nicksonlvqq@gmail.com" title="Email"><i class="iconfont icon-youxiang" style="color: rgb(95, 174, 238)"></i></a>
         </div>
       `,
