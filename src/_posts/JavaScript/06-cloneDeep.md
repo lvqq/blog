@@ -212,78 +212,53 @@ const TYPE = {
 }
 ```
 
-接着我们完善对于其他类型的处理，这里可以将深拷贝划分为两步，首先是对数据的**初始化**，然后是对可遍历对象的**遍历**操作
+##### 主函数实现
 
-##### 初始化
-
-根据不同的data类型，对拷贝后的值进行了相应的初始化处理：
+接着我们完善对于其他类型的处理，根据不同的data类型，对拷贝后的值进行了相应的处理。在主函数中，对于可遍历数据类型进行了递归遍历。其中， `Symbol` 类型在赋值语句中被当做标识符时（例如对象的键名），此时该属性是匿名且不可枚举的，因而不会在 `for...in` 循环中被捕获，也不会被 `Object.getOwnPropertyNames` 返回，只能通过原始symbol值或 `Object.getOwnPropertySymbols` 方法获取，如下：
 
 ```javascript
-function dataInit(data, type) {
-  const reFlags = /\w*$/
-  const Constructor = data.constructor
-  switch(type) {
+const cloneDeep = (data) => {
+  let cloneData = data
+  const Constructor = data.constructor;
+  // 判断data类型
+  switch (getType(data)) {
+    case TYPE.Array:
+      return data.map(value => cloneDeep(value))
     case TYPE.Object:
       // 获取原对象的原型
-      return Object.create(Object.getPrototypeOf(data))
-    case TYPE.Array:
-      return []
-    case TYPE.Date:
-      // 特殊处理Date
-      return new Constructor(data.getTime())
-    case TYPE.RegExp:
-      // 特殊处理regexp，拷贝过程中lastIndex属性会丢失
-      const reg = new Constructor(data.source, reFlags.exec(data))
-      reg.lastIndex = data.lastIndex
-      return reg
-    case TYPE.Set:
-    case TYPE.Map:
-      return new Constructor()
-    default:
-      return data
-  }
-}
-```
-
-##### 遍历数据
-
-在主函数中，对于可遍历数据类型进行了递归遍历。其中， `Symbol` 类型在赋值语句中被当做标识符时（例如对象的键名），此时该属性是匿名且不可枚举的，因而不会在 `for...in` 循环中被捕获，也不会被 `Object.getOwnPropertyNames` 返回，只能通过原始symbol值或 `Object.getOwnPropertySymbols` 方法获取
-
-```javascript
-function cloneDeep(data) {
-  const dataType = getType(data)
-  // 如果是其他类型，直接返回
-  if(!TYPE[dataType]) return data
-  // 初始化data
-  const retVal = dataInit(data, dataType)
-  // 遍历可遍历类型
-  switch (dataType) {
-    case TYPE.Array:
-      data.forEach(value => retVal.push(cloneDeep(value)))
-      break
-    case TYPE.Object:
+      cloneData = Object.create(Object.getPrototypeOf(data))
       for (let key in data) {
         // 不考虑继承的属性
         if (data.hasOwnProperty(key)) {
-          retVal[key] = cloneDeep(data[key])
+          cloneData[key] = cloneDeep(data[key])
         }
       }
       // 处理Object中Symbol类型的键名
       Object.getOwnPropertySymbols(data).forEach(symbol => {
-        retVal[symbol] = cloneDeep(data[symbol])
+        cloneData[symbol] = cloneDeep(data[symbol])
       })
       break
+    case TYPE.Date:
+      return new Constructor(data.getTime())
+    case TYPE.RegExp:
+      const reFlags = /\w*$/
+      // 特殊处理regexp，拷贝过程中lastIndex属性会丢失
+      cloneData = new Constructor(data.source, reFlags.exec(data))
+      cloneData.lastIndex = data.lastIndex
+      break
     case TYPE.Set:
-      data.forEach(value => retVal.add(cloneDeep(value)))
+      cloneData = new Constructor()
+      data.forEach(value => cloneData.add(cloneDeep(value)))
       break
     case TYPE.Map:
+      cloneData = new Constructor()
       for (let [mapKey, mapValue] of data) {
         // Map的键、值都可以是引用类型，因此都需要拷贝
-        retVal.set(cloneDeep(mapKey), cloneDeep(mapValue))
+        cloneData.set(cloneDeep(mapKey), cloneDeep(mapValue))
       }
       break
   }
-  return retVal
+  return cloneData
 }
 ```
 
@@ -364,42 +339,59 @@ const dataClone = cloneDeep(data)
 具体的[实现](https://github.com/lvqq/Demos/blob/master/cloneDeep/src/clone3.js)如下：
 
 ```javascript
-function cloneDeep(data, hash = new WeakMap()) {
-  const dataType = getType(data)
-  // 如果是其他类型，直接返回
-  if(!TYPE[dataType]) return data
+const cloneDeep = (data, hash = new WeakMap()) => {
+  let cloneData = data
+  const Constructor = data.constructor;
   // 查询是否已拷贝
   if(hash.has(data)) return hash.get(data)
-  const retVal = dataInit(data, dataType)
-  // 对于循环引用，需要在递归循环之前写入hash，否则栈依旧会溢出
-  hash.set(data, retVal)
-  switch (dataType) {
+  switch (getType(data)) {
     case TYPE.Array:
-      data.forEach(value => retVal.push(cloneDeep(value, hash)))
+      cloneData = []
+      hash.set(data, cloneData)
+      data.forEach(value => cloneData.push(cloneDeep(value, hash)))
       break
     case TYPE.Object:
+      // 获取原对象的原型
+      cloneData = Object.create(Object.getPrototypeOf(data))
+      // 对于循环引用，需要在递归循环之前写入hash，否则栈依旧会溢出
+      hash.set(data, cloneData)
       for (let key in data) {
         // 不考虑继承的属性
         if (data.hasOwnProperty(key)) {
-          retVal[key] = cloneDeep(data[key], hash)
+          cloneData[key] = cloneDeep(data[key], hash)
         }
       }
       // 处理Object中Symbol类型的键名
       Object.getOwnPropertySymbols(data).forEach(symbol => {
-        retVal[symbol] = cloneDeep(data[symbol], hash)
+        cloneData[symbol] = cloneDeep(data[symbol], hash)
       })
       break
+    case TYPE.Date:
+      cloneData = new Constructor(data.getTime())
+      hash.set(data, cloneData)
+      break
+    case TYPE.RegExp:
+      const reFlags = /\w*$/
+      // 特殊处理regexp，拷贝过程中lastIndex属性会丢失
+      cloneData = new Constructor(data.source, reFlags.exec(data))
+      cloneData.lastIndex = data.lastIndex
+      hash.set(data, cloneData)
+      break
     case TYPE.Set:
-      data.forEach(value => retVal.add(cloneDeep(value, hash)))
+      cloneData = new Constructor()
+      hash.set(data, cloneData)
+      data.forEach(value => cloneData.add(cloneDeep(value, hash)))
       break
     case TYPE.Map:
+      cloneData = new Constructor()
+      hash.set(data, cloneData)
       for (let [mapKey, mapValue] of data) {
         // Map的键、值都可以是引用类型，因此都需要拷贝
-        retVal.set(cloneDeep(mapKey, hash), cloneDeep(mapValue, hash))
+        cloneData.set(cloneDeep(mapKey, hash), cloneDeep(mapValue, hash))
       }
       break
   }
-  return retVal
+  return cloneData
 }
 ```
 
