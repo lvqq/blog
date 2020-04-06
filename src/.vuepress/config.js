@@ -1,9 +1,12 @@
+const { LINKS } = require('./utils/dictionary')
+const contacts = LINKS.map(item => `<a href="${item.href}" title="${item.title}" target="${item.target || ''}"><i class="iconfont ${item.icon}" style="color: ${item.color}"></i></a>`)
+
 module.exports = {
   base: '/blogs/',
   title: 'chlorine\'s blog',
   description: 'chlorine\'s blog',
   head: [
-    ['link', { rel: 'icon', href: '/img/head.png' }],
+    ['link', { rel: 'icon', href: '/head.png' }],
     ['link', { rel: 'stylesheet', href: 'https://at.alicdn.com/t/font_952822_eipr4f6r8la.css'}],
   ],
   plugins: [
@@ -32,12 +35,7 @@ module.exports = {
         <p class="side-desc"><i class="iconfont icon-yonghu" style="color:rgb(22, 155, 250)"></i> web</p>
         <p class="side-desc"><i class="iconfont icon-aixin1" style="color:rgb(244, 110, 101)"></i> coding、running、reading</p>
         <div class="side-contacts">
-            <a href="https://github.com/lvqq" title="GitHub" target="_blank"><i class="iconfont icon-github" style="color: rgb(148, 138, 236)"></i></a>
-            <a href="https://www.yuque.com/cl222/blogs" title="语雀" target="_blank"><i class="iconfont icon-yuque" style="color: rgb(49, 204, 121)"></i></a>
-            <a href="https://juejin.im/user/5c112987e51d456f47678b0b/posts" title="掘金" target="_blank"><i class="iconfont icon-juejin" style="color: rgb(0, 108, 255)"></i></a>
-            <a href="https://www.jianshu.com/u/a50b09f94d97" title="简书" target="_blank"><i class="iconfont icon-jianshu" style="color: rgb(241, 65, 42)"></i></a>
-            <a href="https://segmentfault.com/blog/chlorine" title="segmentfault" target="_blank"><i class="iconfont icon-segmentfault" style="color: rgb(67, 151, 102)"></i></a>
-            <a href="mailto:nicksonlvqq@gmail.com" title="Email"><i class="iconfont icon-youxiang" style="color: rgb(95, 174, 238)"></i></a>
+          ${contacts.join('')}
         </div>
       `,
 
@@ -49,7 +47,7 @@ module.exports = {
 
       // 头像
       // 设置为外部链接
-      avatar: '/blogs/img/head.png',
+      avatar: '/blogs/head.png',
       
 
       // 社交平台帐号信息

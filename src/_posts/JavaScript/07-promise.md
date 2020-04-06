@@ -2,7 +2,7 @@
 category: JavaScript
 date: 2020-04-01
 title: 如何实现一个 promise
-vssue-title: 11-promise
+vssue-title: 12-promise
 ---
 ![](https://img.nicksonlvqq.cn/2020-04-01/01.png)
 

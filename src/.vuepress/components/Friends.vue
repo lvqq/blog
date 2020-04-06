@@ -49,43 +49,14 @@
 </style>
 
 <script>
+import { FRIENDS } from '../utils/dictionary'
+
 export default {
   name: "Friends",
   data() {
     return {
-      list: [
-        {
-          name: "Jooger",
-          href: "https://jooger.me",
-          head: "https://img.nicksonlvqq.cn/friends/jooger.png"
-        },
-        {
-          name: "青春博客",
-          href: "http://loveteemo.com",
-          head: "https://img.nicksonlvqq.cn/friends/loveteemo.png"
-        },
-        {
-          name: "王小帅&江小美",
-          href: "https://www.tianluogz.com",
-          head: "https://img.nicksonlvqq.cn/friends/tianluogz.png"
-        },
-        {
-          name: "Sanshi-Blog",
-          href: "http://www.sanshi30.cn/",
-          head: "https://img.nicksonlvqq.cn/friends/sanshi30.png"
-        },
-        {
-          name: "花花与风",
-          href: "http://www.huahuayufeng.com/",
-          head: "https://img.nicksonlvqq.cn/friends/huahuayufeng.png"
-        },
-        {
-          name: "梦魇小栈",
-          href: "https://blog.ihoey.com",
-          head: "https://img.nicksonlvqq.cn/friends/ihoey.png"
-        },
-      ]
-    };
+      list: FRIENDS
+    }
   }
 };
 </script>
