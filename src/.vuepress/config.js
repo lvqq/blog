@@ -11,7 +11,6 @@ module.exports = {
   ],
   plugins: [
     'vuepress-plugin-click',
-    'vuepress-plugin-cat',
     ['@vuepress/back-to-top', false],
     'vuepress-plugin-rocket',
     ['vuepress-plugin-zooming', {

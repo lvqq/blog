@@ -11,7 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "lodash.debounce": "^4.0.8",
-    "vuepress-plugin-cat": "^1.0.3",
     "vuepress-plugin-click": "^1.0.0",
     "vuepress-plugin-rocket": "^1.0.1",
     "vuepress-theme-meteorlxy": "^1.7.1"

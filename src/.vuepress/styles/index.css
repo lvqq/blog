@@ -31,10 +31,6 @@
   padding-top: 1.5rem
 }
 
-#vuepress-cat {
-  left: 0;
-}
-
 .posts-list-item .post-title {
   margin: 1.8rem 0;
   transition: all 0.7s ease-out!important
