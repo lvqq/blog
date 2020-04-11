@@ -1,5 +1,5 @@
 ---
-category: web
+category: 浏览器原理
 tags:
   - 浏览器
   - 缓存

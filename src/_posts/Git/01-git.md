@@ -1,5 +1,5 @@
 ---
-category: web
+category: Git
 tags:
   - git
 date: 2018-09-03

@@ -1,6 +1,8 @@
 ---
 category: JavaScript
 date: 2019-09-16
+tags:
+  - 手写
 title: 深拷贝实践
 vssue-title: 10-cloneDeep
 # top: 1

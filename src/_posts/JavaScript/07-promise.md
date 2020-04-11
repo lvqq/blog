@@ -1,6 +1,9 @@
 ---
 category: JavaScript
 date: 2020-04-01
+tags:
+  - promise
+  - 手写
 title: 如何实现一个 promise
 vssue-title: 12-promise
 ---
