@@ -13,7 +13,7 @@ vssue-title: 04-git
 
 <!-- more -->
 
-## 关于远程仓库
+## 远程仓库
 
 因为远程主机默认的主机名是 origin ，这里的例子均以 origin 为例
 
@@ -32,18 +32,22 @@ $ git fetch origin <分支名>
 $ git clone <地址>
 ```
 
-## 关于提交
+## commit
 
 ```bash
+# 将更改保存到暂存区
+$ git add .
 # 提交commit
 $ git commit -m "<备注>"
 # 添加并提交，相当于 git add . + git commit -m "" 
 $ git commit -a -m "<备注>"
 # 合并本次修改到上次commit（不会产生新的commit记录）
 $ git commit --amend
+# 将已被git暂存的文件取消暂存，使 .gitignore 生效
+$ git rm -r --cached . && git add .
 ```
 
-## 关于分支
+## branch
 
 ```bash
 # 切换分支
@@ -66,7 +70,7 @@ $ git branch -r
 $ git branch -a
 ```
 
-## 关于查看日志及记录
+## log
 
 ```bash
 # 查看commit记录
@@ -83,7 +87,7 @@ $ git log -p
 $ git status
 ```
 
-## 关于撤销
+## reset
 
 ```bash
 # 撤销指定文件在工作区和暂存区的修改
@@ -98,7 +102,7 @@ $ git reset --soft HEAD~3
 $ git reset --hard HEAD~3
 ```
 
-## 关于保存
+## stash
 
 ```bash
 # 暂时保存没有提交的工作
@@ -117,7 +121,25 @@ $ git stash drop
 $ git stash clear
 ```
 
-## 关于合并分支
+## tag
+```bash
+# 打印所有版本号
+$ git tag
+# 标记一个本地 tag
+$ git tag <版本号>
+# 删除一个本地 tag
+$ git tag -d <版本号>
+# 切换到一个 tag
+$ git checkout <版本号>
+# 推送单个 tag 到远端
+$ git push origin <版本号>
+# 删除远程仓库的 tag
+$ git push origin --delete <版本号>
+# 推送本地所有 tag 到远端
+$ git push origin --tags
+```
+
+## merge/rebase
 
 ```bash
 # 将指定分支与当前分支合并
