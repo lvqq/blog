@@ -4,7 +4,7 @@ tags:
   - 跨域
 date: 2018-11-04
 title: 常见跨域解决方案
-vssue-title: 07-crossDomain
+vssue-title: 常见跨域解决方案
 ---
 
 ![](https://img.nicksonlvqq.cn/2018-11-04/00.png)

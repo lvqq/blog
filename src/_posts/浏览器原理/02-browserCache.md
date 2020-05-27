@@ -5,7 +5,7 @@ tags:
   - 缓存
 date: 2020-01-20
 title: 浏览器缓存策略
-vssue-title: 11-browserCache
+vssue-title: 浏览器缓存策略
 ---
 
 ![](https://img.nicksonlvqq.cn/2020-01-20.01png)

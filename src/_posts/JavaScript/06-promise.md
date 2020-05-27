@@ -5,7 +5,7 @@ tags:
   - promise
   - 手写
 title: 如何实现一个 promise
-vssue-title: 12-promise
+vssue-title: 如何实现一个 promise
 ---
 ![](https://img.nicksonlvqq.cn/2020-04-01/01.png)
 

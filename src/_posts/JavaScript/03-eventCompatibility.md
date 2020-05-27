@@ -4,7 +4,7 @@ tags:
   - 兼容性
 date: 2018-05-01
 title: 注册事件的兼容性处理
-vssue-title: 03-eventCompatibility
+vssue-title: 注册事件的兼容性处理
 ---
 
 注册事件有好几种方法，每种方法或多或少都有一些不足之处，这里讲一下如何处理注册事件的兼容性问题

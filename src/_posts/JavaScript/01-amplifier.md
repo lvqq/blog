@@ -4,7 +4,7 @@ tags:
   - 放大器
 date: 2017-12-06
 title: 放大器
-vssue-title: 01-amplifier
+vssue-title: 放大器
 ---
 
 ![](https://img.nicksonlvqq.cn/2017-12-06/02.png)

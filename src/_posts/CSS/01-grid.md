@@ -5,7 +5,7 @@ tags:
   - 布局
 date: 2018-10-10
 title: Grid布局快速入门
-vssue-title: 05-grid
+vssue-title: Grid布局快速入门
 ---
 
 ![](https://img.nicksonlvqq.cn/2018-10-10/00.png)

@@ -1,4 +1,5 @@
 ---
+draft: true
 category: JavaScript
 tags:
   - react
@@ -6,7 +7,7 @@ tags:
   - 翻译
 date: 2019-03-28
 title: '[译]React函数组件和类有什么不同？'
-vssue-title: 09-ReactFuncClassDiff
+vssue-title: '[译]React函数组件和类有什么不同？'
 ---
 
 ![](https://img.nicksonlvqq.cn/2019-03-28/00.png)

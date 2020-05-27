@@ -5,7 +5,7 @@ tags:
   - 兼容性
 date: 2017-12-09
 title: 浅谈JS中的坐标获取
-vssue-title: 02-getCoordinate
+vssue-title: 浅谈JS中的坐标获取
 ---
 
 ![](https://img.nicksonlvqq.cn/2017-12-09/00.png)

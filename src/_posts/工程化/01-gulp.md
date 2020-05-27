@@ -5,7 +5,7 @@ tags:
   - 打包
 date: 2018-11-22
 title: 使用gulp实现前端自动化
-vssue-title: 08-gulp
+vssue-title: 使用gulp实现前端自动化
 ---
 
 ![](https://img.nicksonlvqq.cn/2018-11-22/00.png)

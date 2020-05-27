@@ -4,7 +4,7 @@ tags:
   - git
 date: 2018-09-03
 title: 常用Git操作的归纳总结
-vssue-title: 04-git
+vssue-title: 常用Git操作的归纳总结
 ---
 
 ![](https://img.nicksonlvqq.cn/2018-09-03/00.png)
