@@ -18,6 +18,8 @@
     - [使用gulp实现前端自动化](https://github.com/lvqq/blog-code/issues/31)
 - Git
     - [常用Git操作的归纳总结](https://github.com/lvqq/blog-code/issues/26)
+- 工具和插件
+    - [你不能错过的 VSCode 插件](https://github.com/lvqq/blog-code/issues/36)
 
 
 ### base
