@@ -20,8 +20,16 @@ vssue-title: 常用Git操作的归纳总结
 ```bash
 # 获取线上该分支最新的代码
 $ git pull origin <分支名>
-# 将本地该分支的代码上传到远程仓库，如果有冲突无法上传，可以添加 -f 参数强行上传
+# 将本地该分支的代码上传到远程仓库
 $ git push origin <分支名>
+# 强制上传代码到远程仓库
+$ git push origin <分支名> -f
+# 建立当期分支与远程分支的联系并上传到远程仓库，--set-upstream 可以使用缩写 -u
+$ git push --set-upstream origin <分支名>
+# 删除远程分支，等同于 git push origin --delete <分支名>，也可以使用缩写 -d
+$ git push origin :<分支名>
+# 使用目标分支覆盖远程分支，一般适用于分支同步，目标分支既可以是本地分支，也可以是远程分支（加 origin/）
+$ git push origin <分支名>:<分支名>
 # 列出所有远程主机
 $ git remote
 # 查看主机的详细信息
@@ -68,6 +76,8 @@ $ git branch
 $ git branch -r
 # 列出所有分支
 $ git branch -a
+# 设置当前分支追踪目标分支
+$ git brance --set-upstream <分支名>
 ```
 
 ## log
