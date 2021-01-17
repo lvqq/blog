@@ -30,9 +30,9 @@ module.exports = {
 
       // 个人简介
       description: `
-        <p class="side-desc side-desc-word">sometimes ever, sometimes never</p>
-        <p class="side-desc"><i class="iconfont icon-yonghu" style="color:rgb(22, 155, 250)"></i> web</p>
-        <p class="side-desc"><i class="iconfont icon-aixin1" style="color:rgb(244, 110, 101)"></i> coding、running、reading</p>
+        <p class="side-desc side-desc-word">Sometimes ever, sometimes never</p>
+        <p class="side-desc"><i class="iconfont icon-yonghu" style="color:rgb(22, 155, 250)"></i> FE</p>
+        <p class="side-desc"><i class="iconfont icon-aixin1" style="color:rgb(244, 110, 101)"></i> Coding、Running、Reading</p>
         <div class="side-contacts">
           ${contacts.join('')}
         </div>
@@ -89,7 +89,7 @@ module.exports = {
       poweredByTheme: false,
 
       // 添加自定义 footer (支持 HTML)
-      custom: '<a style="color: #666;" href="https://old.nicksonlvqq.cn" target="_blank">旧版入口</a> | Copyright © 2017-2020 <a href="https://www.nicksonlvqq.cn/" target="_blank">chlorine</a> | <a href="http://www.beian.miit.gov.cn/">鄂ICP备18005280号</a>',
+      custom: '<a style="color: #666;" href="https://old.nicksonlvqq.cn" target="_blank">旧版入口</a> | Copyright © 2017-2021 <a href="https://www.nicksonlvqq.cn/" target="_blank">chlorine</a> | <a href="http://www.beian.miit.gov.cn/">鄂ICP备18005280号</a>',
     },
 
     // 是否显示文章的最近更新时间
@@ -99,6 +99,7 @@ module.exports = {
     nav: [
       { text: '首页', link: '/', exact: true },
       { text: '文章', link: '/posts/', exact: false },
+      { text: '知识图谱', link: '/atlas/', exact: false },
       { text: '关于', link: '/about/', exact: false },
     ],
 
