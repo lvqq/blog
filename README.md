@@ -23,7 +23,7 @@
 
 
 ### atlas
-- [web 前端知识架构](https://www.chlorine.site/blogs/atlas/)
+- [web 前端知识架构](https://www.chlorine.site/atlas/)
 
 ### base
 - vue

@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "vuepress dev src",
-    "build": "vuepress build src --dest dist"
+    "build": "vuepress build src --dest dist",
+    "connect": "./scripts/connect.sh",
+    "upload": "./scripts/upload.sh"
   },
   "author": "",
   "license": "ISC",

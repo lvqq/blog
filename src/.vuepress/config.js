@@ -2,7 +2,7 @@ const { LINKS } = require('./utils/dictionary')
 const contacts = LINKS.map(item => `<a href="${item.href}" title="${item.title}" target="${item.target || ''}"><i class="iconfont ${item.icon}" style="color: ${item.color}"></i></a>`)
 
 module.exports = {
-  base: '/blogs/',
+  base: '/',
   title: 'chlorine\'s blog',
   description: 'chlorine\'s blog',
   head: [
@@ -46,7 +46,7 @@ module.exports = {
 
       // 头像
       // 设置为外部链接
-      avatar: '/blogs/head.png',
+      avatar: '/head.png',
       
 
       // 社交平台帐号信息
