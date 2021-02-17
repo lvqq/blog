@@ -14,6 +14,8 @@
 - 浏览器原理
     - [浏览器缓存策略](https://github.com/lvqq/blog-code/issues/34)
     - [常见跨域解决方案](https://github.com/lvqq/blog-code/issues/30)
+- 服务端
+    - [从0到1实现简单部署](https://github.com/lvqq/blog/issues/44)
 - 工程化
     - [使用gulp实现前端自动化](https://github.com/lvqq/blog-code/issues/31)
 - Git
