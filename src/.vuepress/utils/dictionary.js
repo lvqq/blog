@@ -27,13 +27,13 @@ const LINKS = [
     "icon": "icon-segmentfault",
     "color": "rgb(67, 151, 102)"
   },
-  {
-    "href": "https://www.jianshu.com/u/a50b09f94d97",
-    "title": "简书",
-    "target": "_blank",
-    "icon": "icon-jianshu",
-    "color": "rgb(241, 65, 42)"
-  },
+  // {
+  //   "href": "https://www.jianshu.com/u/a50b09f94d97",
+  //   "title": "简书",
+  //   "target": "_blank",
+  //   "icon": "icon-jianshu",
+  //   "color": "rgb(241, 65, 42)"
+  // },
   {
     "href": "mailto:nicksonlvqq@gmail.com",
     "title": "Email",
