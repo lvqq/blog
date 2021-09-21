@@ -4,7 +4,7 @@ tags:
   - nodejs
 date: 2021-09-21
 title: 如何安全地执行用户的自定义 nodejs 脚本
-vssue-title: 从0到1实现简单部署
+vssue-title: 如何安全地执行用户的自定义 nodejs 脚本
 ---
 
 ![](https://img.nicksonlvqq.cn/2021-09-21/01.png)
@@ -228,7 +228,7 @@ if (isMainThread) {
 
 
 # 参考
-- vm2
-- https://github.com/patriksimek/vm2/issues/180
-- NodeJs - vm
-- Sandboxing NodeJS is hard, here is why
+- [vm2](https://github.com/patriksimek/vm2)
+- [https://github.com/patriksimek/vm2/issues/180](https://github.com/patriksimek/vm2/issues/180)
+- [NodeJs - vm](https://nodejs.org/api/vm.html)
+- [Sandboxing NodeJS is hard, here is why](https://pwnisher.gitlab.io/nodejs/sandbox/2019/02/21/sandboxing-nodejs-is-hard.html)

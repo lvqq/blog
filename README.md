@@ -3,6 +3,7 @@
 
 ### list
 - JavaScript
+    - [如何安全地执行用户的自定义 nodejs 脚本](https://github.com/lvqq/blog/issues/56)
     - [如何实现一个promise](https://github.com/lvqq/blog-code/issues/35)
     - [深拷贝实践](https://github.com/lvqq/blog-code/issues/33)
     - [注册事件的兼容性处理](https://github.com/lvqq/blog-code/issues/25)
