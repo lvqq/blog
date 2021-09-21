@@ -53,6 +53,8 @@ $ git commit -a -m "<备注>"
 $ git commit --amend
 # 将已被git暂存的文件取消暂存，使 .gitignore 生效
 $ git rm -r --cached . && git add .
+# 将该 commit id 对应的变更提交到当前分支
+$ git cherry-pick <commit id>
 ```
 
 ## branch
@@ -110,6 +112,8 @@ $ git reset HEAD~3
 $ git reset --soft HEAD~3
 # 将指针回退三个commit，改变工作区，即删除commit记录并回退工作区的修改。
 $ git reset --hard HEAD~3
+# 回退到指针 HEAD@{1} 的位置，可以通过 git reflog 查看所有操作对应的指针
+$ git reset --hard HEAD@{1}
 ```
 
 ## stash
