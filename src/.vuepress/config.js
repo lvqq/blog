@@ -6,6 +6,7 @@ module.exports = {
   title: 'chlorine\'s blog',
   description: 'chlorine\'s blog',
   head: [
+    ['script', {}, 'var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?d8d60e7ae4a779698e2d60a30ff11fa4";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();'],
     ['link', { rel: 'icon', href: 'https://img.chlorine.site/head.jpg' }],
     ['link', { rel: 'stylesheet', href: 'https://at.alicdn.com/t/font_952822_eipr4f6r8la.css'}],
   ],
