@@ -34,6 +34,9 @@
 - theme-meteorlxy
 
 ### about
-vuepress plugin:
+##### vuepress plugin
 - click💖:[vuepress-plugin-click](https://github.com/lvqq/vuepress-plugin-click)
 - back-to-top🚀:[vuepress-plugin-rocket](https://github.com/lvqq/vuepress-plugin-rocket)
+
+##### samples
+- [blog-samples](https://github.com/lvqq/blog-samples)

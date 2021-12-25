@@ -89,7 +89,7 @@ module.exports = {
       poweredByTheme: false,
 
       // 添加自定义 footer (支持 HTML)
-      custom: '<a style="color: #666;" href="https://old.nicksonlvqq.cn" target="_blank">旧版入口</a> | Copyright © 2017-2021 <a href="https://www.nicksonlvqq.cn/" target="_blank">chlorine</a> | <a href="http://www.beian.miit.gov.cn/">鄂ICP备18005280号</a>',
+      custom: 'Copyright © 2017-2022 <a href="https://www.chlorine.site/" target="_blank">chlorine</a> | <a href="http://www.beian.miit.gov.cn/">鄂ICP备18005280号</a>',
     },
 
     // 是否显示文章的最近更新时间
