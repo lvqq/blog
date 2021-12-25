@@ -8,7 +8,7 @@ title: 使用gulp实现前端自动化
 vssue-title: 使用gulp实现前端自动化
 ---
 
-![](https://img.nicksonlvqq.cn/2018-11-22/00.png)
+![](https://img.chlorine.site/2018-11-22/00.png)
 
 gulp是一个自动化构建工具，开发者可以用它来自动执行一些常见的任务。这里以我之前做的一个demo为例，简要介绍如何使用gulp实现前端工程自动化
 
@@ -16,7 +16,7 @@ gulp是一个自动化构建工具，开发者可以用它来自动执行一些�
 
 ## 项目结构
 
-![](https://img.nicksonlvqq.cn/2018-11-22/01.jpg)
+![](https://img.chlorine.site/2018-11-22/01.jpg)
 
 其中`src`目录下表示的是项目的源代码，可以看到其中有less、js、html等，而`dist`目录则是保存的是`gulp`编译后生成的代码，相当于生产环境。最后也最重要的是`gulpfile.js`，这个文件用于设置`gulp`相关的配置，类似于`webpack`中的`webpack.config.js`。
 

@@ -8,7 +8,7 @@ title: 你不能错过的 VSCode 插件
 vssue-title: 你不能错过的 VSCode 插件
 ---
 
-![](https://img.nicksonlvqq.cn/2020-06-03/0.png)
+![](https://img.chlorine.site/2020-06-03/0.png)
 
 VSCode 是一个轻量级的 IDE，许多功能都是依靠插件来进行支持的，这里介绍一些常见好用的 VSCode 插件，帮助大家提升开发体验和效率~
 
@@ -70,41 +70,41 @@ VSCode 是一个轻量级的 IDE，许多功能都是依靠插件来进行支持
 
 - 【GitLens — Git supercharged】对 VSCode git 功能的增强，在代码行末尾增加一段作者注释，方便快速定位；还可以在左侧控制面板查看 文件/单行代码 的 git 历史记录等
 
-![image.png](https://img.nicksonlvqq.cn/2020-06-03/01.png)
+![image.png](https://img.chlorine.site/2020-06-03/01.png)
 
 ## 视觉类
 
 - 【Bracket Pair Colorizer】根据颜色区别不同层次的括号
 
-![image.png](https://img.nicksonlvqq.cn/2020-06-03/02.png)
+![image.png](https://img.chlorine.site/2020-06-03/02.png)
 
 - 【indent-rainbow】使用不同背景色块对缩进进行区分，大片背景色块在视觉上可能会形成阻碍
 
-![image.png](https://img.nicksonlvqq.cn/2020-06-03/03.png)
+![image.png](https://img.chlorine.site/2020-06-03/03.png)
 
 - 【Markdown Preview Enhanced】在 VSCode 中预览 markdown 文件
 
-![image.png](https://img.nicksonlvqq.cn/2020-06-03/04.png)
+![image.png](https://img.chlorine.site/2020-06-03/04.png)
 
 - 【SVG Viewer】在 VSCode 中预览 SVG 文件
 - 【TODO Highlight】高亮 TODO，醒目提示
 
-![](https://img.nicksonlvqq.cn/2020-06-03/05.png)
+![](https://img.chlorine.site/2020-06-03/05.png)
 
 - 【vscode-icons】提供一组图标丰富文件夹类型
 
-![image.png](https://img.nicksonlvqq.cn/2020-06-03/06.png)
+![image.png](https://img.chlorine.site/2020-06-03/06.png)
 
 
 ## 资源类
 
 - 【filesize】展示文件大小以及一些额外信息
 
-![image.png](https://img.nicksonlvqq.cn/2020-06-03/07.png)
+![image.png](https://img.chlorine.site/2020-06-03/07.png)
 
 - 【Import Cost】成本提示，展示引入包的体积大小，但目前 `v0.2.12` 只支持 js/ts，vue 中无法使用
 
-![image.png](https://img.nicksonlvqq.cn/2020-06-03/08.png)
+![image.png](https://img.chlorine.site/2020-06-03/08.png)
 
 
 ## 通用类
@@ -113,7 +113,7 @@ VSCode 是一个轻量级的 IDE，许多功能都是依靠插件来进行支持
 - 【Code Spell Checker】检查代码中的英文拼写错误
 - 【Project Manager】提供方便快捷的项目管理，可以 save/open 项目
 
-![image.png](https://img.nicksonlvqq.cn/2020-06-03/09.png)
+![image.png](https://img.chlorine.site/2020-06-03/09.png)
 
 - 【Setting Sync】可以保存/同步你的 VSCode 设置
 

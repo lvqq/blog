@@ -10,7 +10,7 @@ title: '[译]React函数组件和类有什么不同？'
 vssue-title: '[译]React函数组件和类有什么不同？'
 ---
 
-![](https://img.nicksonlvqq.cn/2019-03-28/00.png)
+![](https://img.chlorine.site/2019-03-28/00.png)
 
 React函数组件和类之间有什么不同？
 
@@ -68,7 +68,7 @@ class ProfilePage extends React.Component {
 
 通常认为这两种写法是等效的，人们不会注意到它们的区别，常常在这两种模式之间自由地切换。
 
-![](https://img.nicksonlvqq.cn/2019-03-28/01.gif)
+![](https://img.chlorine.site/2019-03-28/01.gif)
 
 **然而，这两个代码片段略有不同。** 仔细看看它们，你看到差异了吗？对于我个人而言，花了一段时间才看到这一点。
 
@@ -93,7 +93,7 @@ class ProfilePage extends React.Component {
 - 使用上述`ProfilePage` **function**，单击Follow on Dan的个人资料，然后更改到Sophie's仍然会alert`'Followed Dan'`。
 - 通过上面的ProfilePage **class**，它会提醒'Followed Sophie'：
 
-![](https://img.nicksonlvqq.cn/2019-03-28/02.gif)
+![](https://img.chlorine.site/2019-03-28/02.gif)
 
 在此示例中，第一个操作是正确的操作。**如果我follow一个人然后切换到另一个人的个人资料，我的组件不应该对我follow的人感到困惑。** 这个class实现显然是错误的。
 
@@ -194,7 +194,7 @@ class ProfilePage extends React.Component {
 
 **你已经"捕获”了render时的props**：
 
-![](https://img.nicksonlvqq.cn/2019-03-28/03.gif)
+![](https://img.chlorine.site/2019-03-28/03.gif)
 
 这样，它内部的任何代码（包括`showMessage`）都可以保证看到这个特定render的props。React不再“移动我们的奶酪”了。
 

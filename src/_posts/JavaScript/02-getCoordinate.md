@@ -8,7 +8,7 @@ title: 浅谈JS中的坐标获取
 vssue-title: 浅谈JS中的坐标获取
 ---
 
-![](https://img.nicksonlvqq.cn/2017-12-09/00.png)
+![](https://img.chlorine.site/2017-12-09/00.png)
 
 在编写JavaScript代码时，经常会需要获得鼠标或者某个盒子的相对坐标，这里我们就简要介绍一下几种获取方法的不同
 
@@ -26,7 +26,7 @@ vssue-title: 浅谈JS中的坐标获取
 
 一张图说明三者的区别：
 
-![](https://img.nicksonlvqq.cn/2017-12-09/01.png)
+![](https://img.chlorine.site/2017-12-09/01.png)
 
 如图☝
 

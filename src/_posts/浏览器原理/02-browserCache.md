@@ -8,7 +8,7 @@ title: 浏览器缓存策略
 vssue-title: 浏览器缓存策略
 ---
 
-![](https://img.nicksonlvqq.cn/2020-01-20.01png)
+![](https://img.chlorine.site/2020-01-20.01png)
 
 最近在对项目做 IE 11 兼容，由 IE 的缓存问题，引发我对于浏览器缓存策略的思考。
 
@@ -49,11 +49,11 @@ app.get('/expries', (req, res) => {
 
 这里使用 express 创建了一个 web 服务，在 header 中添加了 Expires 响应头，利用 moment 转化为相应的 GMT 格式，设置为 10s 后过期，可以看到首次请求时向服务端发起了 HTTP 请求，第二次则使用了缓存（**disk cache**），超过 10s 之后再请求时（第三次）缓存过期，重新向服务端发起 HTTP 请求。
 
-![](https://img.nicksonlvqq.cn/2020-01-20/04.jpg)
+![](https://img.chlorine.site/2020-01-20/04.jpg)
 
 请求时带上 Expries 请求头：
 
-![](https://img.nicksonlvqq.cn/2020-01-20/03.jpg)
+![](https://img.chlorine.site/2020-01-20/03.jpg)
 
 #### Cache-Control
 
@@ -69,7 +69,7 @@ Cache-Control 是一个通用首部，既可以设置在请求头中，也可以
 
 其中`private`、`public`只能用于响应头部中
 
-![](https://img.nicksonlvqq.cn/2020-01-20/05.jpg)
+![](https://img.chlorine.site/2020-01-20/05.jpg)
 
 ### 2.协商缓存
 
@@ -85,11 +85,11 @@ Cache-Control 是一个通用首部，既可以设置在请求头中，也可以
 2. 再次请求，如果浏览器缓存未过期，直接读取缓存中的资源（**disk cache**）
 3. 当浏览器的缓存资源过期，此时再发起 HTTP 请求时，会自动带上 `If-Modified-Since` 这个请求头部，它的值即为上一次请求响应的 `Last-Modified`，服务端比较两个字段的值，如果一致，说明资源未改动，返回 304，否则返回更改后的资源。
 
-![](https://img.nicksonlvqq.cn/2020-01-20/06.jpg)
+![](https://img.chlorine.site/2020-01-20/06.jpg)
 
 可以看到再次请求时自动加上 `If-Modified-Since` 请求头部：
 
-![](https://img.nicksonlvqq.cn/2020-01-20/07.png)
+![](https://img.chlorine.site/2020-01-20/07.png)
 
 服务端实现如下：
 
@@ -122,11 +122,11 @@ app.get('/lastModified', (req, res) => {
 2. 再次请求，如果浏览器缓存未过期，直接读取缓存中的资源（**disk cache**）
 3. 当浏览器的缓存资源过期，此时再发起 HTTP 请求时，会自动带上 `If-None-Match` 这个请求头部，它的值即为上一次请求响应的 `ETag`，服务端比较两个字段的值，如果一致，说明资源未改动，返回 304，否则返回更改后的资源。
 
-![](https://img.nicksonlvqq.cn/2020-01-20/08.jpg)
+![](https://img.chlorine.site/2020-01-20/08.jpg)
 
 当文件发生变化时，响应头部的 `ETag` 和请求头部的 `If-None-Match` 不一致：
 
-![](https://img.nicksonlvqq.cn/2020-01-20/09.jpeg)
+![](https://img.chlorine.site/2020-01-20/09.jpeg)
 
 服务端实现如下：
 
@@ -164,7 +164,7 @@ app.get('/eTag', (req, res) => {
 
 **Chrome** 下测试，在请求头部/响应头部中设置 `Pragma: 'no-cache'` 均可以实现禁用缓存：
 
-![](https://img.nicksonlvqq.cn/2020-01-20/10.png)
+![](https://img.chlorine.site/2020-01-20/10.png)
 
 但在 IE 11 下，当 `Pragma` 置于响应头部时并未生效，可以在 IE 11 下运行[测试代码](https://github.com/lvqq/Demos/tree/master/browserCache)进行验证。
 
@@ -191,17 +191,17 @@ app.get('/eTag', (req, res) => {
 
 在**Chrome**下验证，当 `Pragma`为 **no-cache**，`Cache-Control` 设置 **1000s** 缓存时，浏览器会禁用缓存：
 
-![](https://img.nicksonlvqq.cn/2020-01-20/11.png)
+![](https://img.chlorine.site/2020-01-20/11.png)
 
 同样，设置响应头为 `Cache-Control: 'no-cache'` 和 `Expries` 为 **1000s** 后过期，浏览器依然禁用缓存：
 
-![](https://img.nicksonlvqq.cn/2020-01-20/12.png)
+![](https://img.chlorine.site/2020-01-20/12.png)
 
 ## 缓存过程
 
 整体的缓存过程如下：
 
-![](https://img.nicksonlvqq.cn/2020-01-20/13.png)
+![](https://img.chlorine.site/2020-01-20/13.png)
 
 ## IE 下的缓存
 
@@ -213,7 +213,7 @@ app.get('/eTag', (req, res) => {
 
 另外，由于 IE 浏览器打开控制台之后默认开启**始终从服务端刷新**，在 debug 阶段着实给我造成了不小的困扰，后来放弃使用控制台，通过抓包工具[Charles](https://www.charlesproxy.com/)进行截取、分析，这才定位到问题。
 
-![](https://img.nicksonlvqq.cn/2020-01-20/02.png)
+![](https://img.chlorine.site/2020-01-20/02.png)
 
 ### IE 缓存问题
 

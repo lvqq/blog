@@ -7,7 +7,7 @@ title: 如何安全地执行用户的自定义 nodejs 脚本
 vssue-title: 如何安全地执行用户的自定义 nodejs 脚本
 ---
 
-![](https://img.nicksonlvqq.cn/2021-09-21/01.png)
+![](https://img.chlorine.site/2021-09-21/01.png)
 
 最近在业务开发过程中，遇到需要执行用户自定义 nodejs 脚本的场景，那么该如何安全地执行用户的神秘代码呢？
 

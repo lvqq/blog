@@ -55,7 +55,7 @@ vssue-title: 注册事件的兼容性处理
 
 简单来说，点击element2，当参数为 **true** 时，事件在**捕获阶段**触发，冒泡阶段不触发。先触发`element1.onclick`，再触发`element2.onclick`。<br />当参数为 **false**（默认值）时，事件在**冒泡阶段**触发，捕获阶段不触发。先触发`element2.onclick`，再触发`element1.onclick`。
 
-![](https://img.nicksonlvqq.cn/2018-05-01/01.png)
+![](https://img.chlorine.site/2018-05-01/01.png)
 
 ## 兼容性写法
 

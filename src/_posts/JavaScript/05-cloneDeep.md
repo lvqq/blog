@@ -6,7 +6,7 @@ tags:
 title: 深拷贝实践
 vssue-title: 深拷贝实践
 # top: 1
-header-image: https://img.nicksonlvqq.cn/bgimg/01.jpg
+header-image: https://img.chlorine.site/bgimg/01.jpg
 ---
 
 > 前言：js如何实现一个深拷贝
@@ -80,7 +80,7 @@ obj.obj.foo = 'test1'
 
 结果如下：
 
-![image.png](https://img.nicksonlvqq.cn/2019-09-16/01.png)
+![image.png](https://img.chlorine.site/2019-09-16/01.png)
 
 可以看到经过浅拷贝以后，我们去修改原对象或数组中的基本类型数据，拷贝后的相应数据未发生改变；而修改原对象或数组中的引用类型数据，拷贝后的数据会发生相应变化，它们共享同一内存空间
 
@@ -113,7 +113,7 @@ const dataCopy = JSON.parse(JSON.stringify(data))
 
 可以看到 `NaN` 、 `Infinity` 在序列化的过程中被转化为了 `null` ，而 `undefined` 则丢失了：
 
-![image.png](https://img.nicksonlvqq.cn/2019-09-16/02.png)
+![image.png](https://img.chlorine.site/2019-09-16/02.png)
 
 再使用 [用例 3.test.js](https://github.com/lvqq/Demos/blob/master/cloneDeep/test/3.test.js) 对引用类型进行测试：
 
@@ -133,7 +133,7 @@ const dataCopy = JSON.parse(JSON.stringify(data))
 
 对于引用类型数据，在序列化与反序列化过程中，只有数组和对象被正常拷贝，其中时间对象被转化为了字符串，函数会丢失，其他的都被转化为了空对象：
 
-![image.png](https://img.nicksonlvqq.cn/2019-09-16/03.png)
+![image.png](https://img.chlorine.site/2019-09-16/03.png)
 
 利用 [用例 4.test.js](https://github.com/lvqq/Demos/blob/master/cloneDeep/test/4.test.js) 对构造函数进行验证：
 
@@ -155,7 +155,7 @@ const personCopy = JSON.parse(JSON.stringify(person))
 
 在拷贝过程中只会序列化对象可枚举的自身属性，因此无法拷贝 `Person` 上的原型属性 `age` ；由于序列化的过程中构造函数会丢失，所以 `personCopy` 的 `constructor` 会指向顶层的原生构造函数 `Object`  而不是自定义构造函数`Person` 
 
-![image.png](https://img.nicksonlvqq.cn/2019-09-16/04.png)
+![image.png](https://img.chlorine.site/2019-09-16/04.png)
 
 ### 2. 手动实现深拷贝方法
 #### 简单版
@@ -188,7 +188,7 @@ const dataCopy = cloneDeep(data)
 
 可以看到对于对象和数组能够实现正确的拷贝
 
-![image.png](https://img.nicksonlvqq.cn/2019-09-16/05.png)
+![image.png](https://img.chlorine.site/2019-09-16/05.png)
 
 首先是只考虑了对象和数组这两种类型，其他引用类型数据依然与原数据共享同一内存空间，有待完善；其次，对于自定义的构造函数而言，在拷贝的过程中会丢失实例对象的 `constructor` ，因此其构造函数会变为默认的 `Object` 
 
@@ -285,12 +285,12 @@ const dataClone = cloneDeep(data)
 
 可以看到对于不同类型的引用数据都能够实现正确拷贝，结果如下：
 
-![image.png](https://img.nicksonlvqq.cn/2019-09-16/13.png)
+![image.png](https://img.chlorine.site/2019-09-16/13.png)
 
 ##### 关于函数
 函数的拷贝我这里没有实现，两个对象中的函数使用同一个内存空间并没有什么问题。实际上，查看了 `lodash/cloneDeep` 的相关实现后，对于函数它是直接返回的：
 
-![image.png](https://img.nicksonlvqq.cn/2019-09-16/07.png)
+![image.png](https://img.chlorine.site/2019-09-16/07.png)
 
 到这一步，我们的深拷贝方法已经初具雏形，实际上需要特殊处理的数据类型远不止这些，还有 `Error` 、 `Buffer` 、 `Element`  等，有兴趣的小伙伴可以继续探索实现一下~
 
@@ -306,7 +306,7 @@ cloneDeep(a)
 
 可以看到，对于循环引用，在进行递归调用的时候会变成死循环而导致栈溢出：
 
-![image.png](https://img.nicksonlvqq.cn/2019-09-16/08.png)
+![image.png](https://img.chlorine.site/2019-09-16/08.png)
 
 那么如何破解呢？
 
@@ -324,7 +324,7 @@ const dataClone = cloneDeep(data)
 
 验证一下引用关系：
 
-![image.png](https://img.nicksonlvqq.cn/2019-09-16/09.png)
+![image.png](https://img.chlorine.site/2019-09-16/09.png)
 
 如果解除这种引用关系是你想要的，那完全ok。如果你想保持数据之间的引用关系，那么该如何去实现呢？
 
@@ -409,7 +409,7 @@ map.set(map, map)
 
 结果如下：
 
-![image.png](https://img.nicksonlvqq.cn/2019-09-16/10.png)
+![image.png](https://img.chlorine.site/2019-09-16/10.png)
 
 #### 思考：使用非递归
 在前面的深拷贝实现方法中，均是通过递归的方式来进行遍历，当递归的层级过深时，也会出现栈溢出的情况，我们使用下面的 `create` 方法创建深度为10000，广度为100的示例数据：
@@ -436,7 +436,7 @@ cloneDeep(data)
 
 结果如下：
 
-![image.png](https://img.nicksonlvqq.cn/2019-09-16/11.png)
+![image.png](https://img.chlorine.site/2019-09-16/11.png)
 
 那么假如不使用递归，我们应该如何实现呢？
 
@@ -454,7 +454,7 @@ const data = {
 
 那么换个角度看，其实它就是一个类树形结构：
 
-![image.png](https://img.nicksonlvqq.cn/2019-09-16/12.png)
+![image.png](https://img.chlorine.site/2019-09-16/12.png)
 
 我们对该对象进行遍历实际上相当于模拟对树的遍历。树的遍历主要分为深度优先遍历和广度优先遍历，前者一般借助**栈**来实现，后者一般借助**队列**来实现。
 

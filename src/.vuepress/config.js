@@ -6,7 +6,7 @@ module.exports = {
   title: 'chlorine\'s blog',
   description: 'chlorine\'s blog',
   head: [
-    ['link', { rel: 'icon', href: '/head.png' }],
+    ['link', { rel: 'icon', href: 'https://img.chlorine.site/head.jpg' }],
     ['link', { rel: 'stylesheet', href: 'https://at.alicdn.com/t/font_952822_eipr4f6r8la.css'}],
   ],
   plugins: [
@@ -46,7 +46,7 @@ module.exports = {
 
       // 头像
       // 设置为外部链接
-      avatar: '/head.png',
+      avatar: 'https://img.chlorine.site/head.jpg',
       
 
       // 社交平台帐号信息

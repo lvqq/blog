@@ -7,7 +7,7 @@ title: 放大器
 vssue-title: 放大器
 ---
 
-![](https://img.nicksonlvqq.cn/2017-12-06/02.png)
+![](https://img.chlorine.site/2017-12-06/02.png)
 
 经常逛某宝可以发现，查看商品时都有如下的放大功能，鼠标放到图片上可以看到图片的细节，那么它是如何实现的呢？是真的将图片放大了吗？这篇文章就是讲述这个放大器是如何实现的
 
@@ -48,7 +48,7 @@ css部分就不给出了，无非是给盒子设宽高，调一下边距什么�
          <br />什么意思呢？<br />要使放大的区域与左侧遮盖的区域一样，那么左右宽高需要保持相同的比例，相信这一点不难理解。
       
 
-![](https://img.nicksonlvqq.cn/2017-12-06/03.png)
+![](https://img.chlorine.site/2017-12-06/03.png)
 
 在这里，遮罩宽高为200px，缩略图为400px，显示区域为450px，原图为900px(上图所画原图大小仅做参考)
 
@@ -70,7 +70,7 @@ box1.onmousemove = function(event) {
 
 用 event.pageX减去box1.offsetLeft再减去遮罩的半宽，就得到遮罩的左侧与盒子间的距离，如下图：<br />（坐标相关可以参考：[JS坐标获取](http://www.nicksonlvqq.cn/blog/8/)）
 
-![](https://img.nicksonlvqq.cn/2017-12-06/04.png)
+![](https://img.chlorine.site/2017-12-06/04.png)
 
 再对x进行约束，使遮罩无法移出边框，最后将x赋值给left:
 

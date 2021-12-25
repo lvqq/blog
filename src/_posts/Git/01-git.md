@@ -7,7 +7,7 @@ title: 常用Git操作的归纳总结
 vssue-title: 常用Git操作的归纳总结
 ---
 
-![](https://img.nicksonlvqq.cn/2018-09-03/00.png)
+![](https://img.chlorine.site/2018-09-03/00.png)
 
 在日常的开发过程中离不开git 的接触和使用，这里我总结归纳一下比较常见的以及实际开发过程中常用的 git 命令，持续更新中
 

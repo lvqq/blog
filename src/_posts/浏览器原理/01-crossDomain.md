@@ -7,7 +7,7 @@ title: 常见跨域解决方案
 vssue-title: 常见跨域解决方案
 ---
 
-![](https://img.nicksonlvqq.cn/2018-11-04/00.png)
+![](https://img.chlorine.site/2018-11-04/00.png)
 
 不论是开放的API接口，还是部署在不同服务器的项目，很多都绕不开跨域这个问题，那么跨域有哪些常见的解决方案呢？
 
@@ -65,7 +65,7 @@ url中q表示查询图书时输入的信息，count表示查询结果的条目�
 
 点击后可以看到成功获取到了数据：
 
-![](https://img.nicksonlvqq.cn/2018-11-04/01.png)
+![](https://img.chlorine.site/2018-11-04/01.png)
 
 ### jQuery中使用 jsonp
 
@@ -104,7 +104,7 @@ $.getJSON("https://api.douban.com/v2/book/search?q=JavaScript高级程序设计&
 
 `CORS`全称是“跨域资源共享”，允许向跨域服务器发送Ajax请求。对于开发者来说，和使用Ajax没有什么区别，关键在于服务器，只要服务器实现了`CORS`的支持，就能实现跨域访问。关于`CORS`的兼容性如下：
 
-![](https://img.nicksonlvqq.cn/2018-11-04/02.png)
+![](https://img.chlorine.site/2018-11-04/02.png)
 
 可以看到绝大多数浏览器都支持`CORS`，而IE则必须在`IE10`及以上。`IE10`以下的则使用的是`XDomainRequest`对象，这里就不展开了。
 

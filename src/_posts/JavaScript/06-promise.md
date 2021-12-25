@@ -7,7 +7,7 @@ tags:
 title: 如何实现一个 promise
 vssue-title: 如何实现一个 promise
 ---
-![](https://img.nicksonlvqq.cn/2020-04-01/01.png)
+![](https://img.chlorine.site/2020-04-01/01.png)
 
 promise 是 ES6 中新增的一种异步解决方案，在日常开发中也经常能看见它的身影，例如原生的 fetch API 就是基于 promise 实现的。那么 promise 有哪些特性，如何实现一个具有 promise/A+ 规范的 promise 呢？
 

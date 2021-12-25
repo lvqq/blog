@@ -8,7 +8,7 @@ title: Grid布局快速入门
 vssue-title: Grid布局快速入门
 ---
 
-![](https://img.nicksonlvqq.cn/2018-10-10/00.png)
+![](https://img.chlorine.site/2018-10-10/00.png)
 
 CSS Grid 是创建网格布局强大的工具，在2017年，已获得主流浏览器的原生支持（Chrome，Firefox，Edge，Safiri），这篇博客带你快速上手 Grid 布局
 
@@ -18,7 +18,7 @@ CSS Grid 是创建网格布局强大的工具，在2017年，已获得主流浏�
 
 在前端领域，提到某个新技术，想在实际开发中使用它，就不得不考虑兼容性问题，目前 Grid 布局在各大主流浏览器已实现支持，如下：
 
-![](https://img.nicksonlvqq.cn/2018-10-10/01.png)
+![](https://img.chlorine.site/2018-10-10/01.png)
 
 
 ## 网格布局
@@ -48,7 +48,7 @@ CSS Grid 是创建网格布局强大的工具，在2017年，已获得主流浏�
 
 得到的效果如下：
 
-![](https://img.nicksonlvqq.cn/2018-10-10/02.png)
+![](https://img.chlorine.site/2018-10-10/02.png)
 
 给`grid-template-columns`设置了三个值，因此得到了三列，给`grid-template-rows`设置了两个值，因此得到了两行。
 
@@ -69,7 +69,7 @@ CSS Grid 是创建网格布局强大的工具，在2017年，已获得主流浏�
 
 可以看到，第二列将剩余空间全部占满。结果如下：
 
-![](https://img.nicksonlvqq.cn/2018-10-10/03.png)
+![](https://img.chlorine.site/2018-10-10/03.png)
 
 再看这个
 
@@ -83,7 +83,7 @@ CSS Grid 是创建网格布局强大的工具，在2017年，已获得主流浏�
 
 第一列和第二列均为 1fr，因此他们将等分 150px 以外的宽度。
 
-![](https://img.nicksonlvqq.cn/2018-10-10/04.png)
+![](https://img.chlorine.site/2018-10-10/04.png)
 
 如果有重复项，可以利用`repeat()`简化，上面的例子还可以写成这样：
 
@@ -111,11 +111,11 @@ CSS Grid 是创建网格布局强大的工具，在2017年，已获得主流浏�
 
 这里设置了一个 3x3 的布局，页面只显示了6个的原因是我们只有6个item来填充这个网格，假如我们再加一个item元素，那么右下角的空白将会被填满。
 
-![](https://img.nicksonlvqq.cn/2018-10-10/05.png)
+![](https://img.chlorine.site/2018-10-10/05.png)
 
 这里我们让第一个 item 从第一根网格线开始，到第四根网格线结束，因此它将占据一整行。至于为什么三个网格会有四根网格线，看下图你就明白了：
 
-![](https://img.nicksonlvqq.cn/2018-10-10/06.png)
+![](https://img.chlorine.site/2018-10-10/06.png)
 
 上面的代码还可以这样简写：
 
@@ -145,7 +145,7 @@ CSS Grid 是创建网格布局强大的工具，在2017年，已获得主流浏�
 
 利用上面的代码，可以轻松得到如下的布局，更多的则需要发挥你的想象力：
 
-![](https://img.nicksonlvqq.cn/2018-10-10/07.png)
+![](https://img.chlorine.site/2018-10-10/07.png)
 
 如果想让网格之间有一定间隙，Grid 布局提供了一个属性`grid-gap`，可以指定网格间距，而不需要我们手动添加margin属性。例如在上面的例子中将`container`属性增加如下两行：
 
@@ -158,7 +158,7 @@ CSS Grid 是创建网格布局强大的工具，在2017年，已获得主流浏�
 
 将得到这样的结果：
 
-![](https://img.nicksonlvqq.cn/2018-10-10/08.png)
+![](https://img.chlorine.site/2018-10-10/08.png)
 
 如果 column 和 row 的值一样，可以简写为`grid-gap`:
 
