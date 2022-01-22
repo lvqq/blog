@@ -1,7 +1,4 @@
-## blog
-
-
-### list
+## Blogs
 - JavaScript
     - [如何安全地执行用户的自定义 nodejs 脚本](https://github.com/lvqq/blog/issues/56)
     - [如何实现一个promise](https://github.com/lvqq/blog-code/issues/35)
@@ -24,19 +21,14 @@
 - 工具和插件
     - [你不能错过的 VSCode 插件](https://github.com/lvqq/blog-code/issues/36)
 
+## Samples
+- [blog-samples](https://github.com/lvqq/blog-samples)
 
-### atlas
-- [web 前端知识架构](https://www.chlorine.site/atlas/)
-
-### base
+## Base
 - vue
 - vuepress
 - theme-meteorlxy
 
-### about
-##### vuepress plugin
-- click💖:[vuepress-plugin-click](https://github.com/lvqq/vuepress-plugin-click)
-- back-to-top🚀:[vuepress-plugin-rocket](https://github.com/lvqq/vuepress-plugin-rocket)
-
-##### samples
-- [blog-samples](https://github.com/lvqq/blog-samples)
+## Plugins
+- [vuepress-plugin-click](https://github.com/lvqq/vuepress-plugin-click) 点击💖
+- [vuepress-plugin-rocket](https://github.com/lvqq/vuepress-plugin-rocket) 上升顶部🚀

@@ -100,7 +100,7 @@ module.exports = {
     nav: [
       { text: '首页', link: '/', exact: true },
       { text: '文章', link: '/posts/', exact: false },
-      { text: '知识图谱', link: '/atlas/', exact: false },
+      // { text: '知识图谱', link: '/atlas/', exact: false },
       { text: '关于', link: '/about/', exact: false },
     ],
 

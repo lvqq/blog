@@ -13,13 +13,13 @@ const LINKS = [
     "icon": "icon-juejin",
     "color": "rgb(0, 108, 255)"
   },
-  {
-    "href": "https://www.yuque.com/cl222/blogs",
-    "title": "语雀",
-    "target": "_blank",
-    "icon": "icon-yuque",
-    "color": "rgb(49, 204, 121)"
-  },
+  // {
+  //   "href": "https://www.yuque.com/cl222/blogs",
+  //   "title": "语雀",
+  //   "target": "_blank",
+  //   "icon": "icon-yuque",
+  //   "color": "rgb(49, 204, 121)"
+  // },
   {
     "href": "https://segmentfault.com/blog/chlorine",
     "title": "segmentfault",

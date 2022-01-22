@@ -2,7 +2,7 @@
   <div class="content">
     <div class="main-div">
       <Content class="content" />
-      <Friends />
+      <!-- <Friends /> -->
     </div>
     <div class="main-div">
       <Vssue title="message-about" />

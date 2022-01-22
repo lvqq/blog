@@ -3,14 +3,15 @@ layout: AboutLayout
 title: 关于
 ---
 
-# base
+# Base
 - vue
 - vuepress
 - theme-meteorlxy
 
-# about
-vuepress插件：
-- 点击💖：[vuepress-plugin-click](https://github.com/lvqq/vuepress-plugin-click)
-- 上升顶部🚀：[vuepress-plugin-rocket](https://github.com/lvqq/vuepress-plugin-rocket)
+# Plugins
+- [vuepress-plugin-click](https://github.com/lvqq/vuepress-plugin-click)点击💖
+- [vuepress-plugin-rocket](https://github.com/lvqq/vuepress-plugin-rocket)上升顶部🚀
 
-# links
+# Projects
+- [aries](https://github.com/lvqq/aries)swagger 转换器，支持通过 swagger 生成接口的类型定义、markdown 文档以及本地 mock 接口
+
