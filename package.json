@@ -7,6 +7,7 @@
     "start": "vuepress dev src",
     "build": "vuepress build src --dest dist",
     "connect": "./scripts/connect.sh",
+    "certificate": "./scripts/certificate.sh",
     "upload": "yarn build && ./scripts/upload.sh"
   },
   "author": "",
