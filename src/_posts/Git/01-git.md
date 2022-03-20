@@ -32,8 +32,14 @@ $ git push origin :<分支名>
 $ git push origin <分支名>:<分支名>
 # 列出所有远程主机
 $ git remote
+# 列出所有远程主机的名称以及对应 url
+$ git remote -v
 # 查看主机的详细信息
 $ git remote show <主机名>
+# 新增一个远程主机
+$ git remote add [name] [url]
+# 删除一个远程主机
+$ git remote rm [name] 
 # 将远程仓库该分支的最新代码取回本地
 $ git fetch origin <分支名>
 # 克隆地址所对应的远程仓库的代码到本地
@@ -104,13 +110,15 @@ $ git status
 ```bash
 # 撤销指定文件在工作区和暂存区的修改
 $ git checkout <文件路径>
+# 不加参数时默认为 --mixed，将暂存区清空，所有改动保留至工作区，与 --soft 的区别为是否更改暂存区
+$ git reset
 # 删除所有工作区和暂存区的修改，回到最近一次commit的状态
 $ git reset --hard
 # 将指针回退三个commit，并改变暂存区
 $ git reset HEAD~3 
 # 将指针回退三个commit，但不改变暂存区，即删除commit记录，但保留工作区的本次修改
 $ git reset --soft HEAD~3
-# 将指针回退三个commit，改变工作区，即删除commit记录并回退工作区的修改。
+# 将指针回退三个commit，改变工作区，即删除commit记录并回退工作区的修改
 $ git reset --hard HEAD~3
 # 回退到指针 HEAD@{1} 的位置，可以通过 git reflog 查看所有操作对应的指针
 $ git reset --hard HEAD@{1}
@@ -156,8 +164,14 @@ $ git push origin --tags
 ## merge/rebase
 
 ```bash
-# 将指定分支与当前分支合并
-$ git merge <分支名> / git rebase <分支名>
+# 将指定分支与当前分支合并。直接做代码合并，会生成一次 merge 的 commit 记录
+$ git merge <分支名>
+# 将指定分支变基至当前分支。不会生成额外的 commit 记录
+$ git rebase <分支名>
+# 变基最近 n 次 commit
+$ git rebase -i HEAD~<number>
+# 从该 hash 的 commit 开始变基
+$ git rebase -i <hash>
 ```
 
 有关`git merge`和`git rebase`的区别，可以参考[merge和rebase的选择](https://github.com/geeeeeeeeek/git-recipes/wiki/5.1-%E4%BB%A3%E7%A0%81%E5%90%88%E5%B9%B6%EF%BC%9AMerge%E3%80%81Rebase-%E7%9A%84%E9%80%89%E6%8B%A9)
