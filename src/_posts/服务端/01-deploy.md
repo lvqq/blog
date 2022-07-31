@@ -14,6 +14,7 @@ vssue-title: 从0到1实现简单部署
 首先你需要有一台云服务器，这里以我的阿里云服务器为例，系统是`CentOS 7.3`
 
 ## 1.远程连接
+### 1.1 登录远程服务器
 
 想要在服务器上进行部署，首先得连接上服务器，可以通过阿里云官网控制的 **浏览器远程连接** 登录服务器，但是比较麻烦，每隔一段时间都需要重新登录。除此之外，还可以利用 ssh 通过账号密码或者密钥进行连接，如下：
 
@@ -24,6 +25,15 @@ ssh root@yourIp
 # 通过密钥进行连接，yourKey 为密钥的本地路径
 ssh root@yourIp -i yourKey
 ```
+
+### 1.2 ssh 配置
+另外近期试用了下腾讯云，发现配置密钥之后居然默认不允许通过密码进行 ssh 登录了，不太方便，需要手动修改相关配置以支持 root 账号密码登录：
+
+- 首先通过配置好的密钥登录远程服务器
+- 然后编辑 `/etc/ssh/sshd_config` 文件，将 `PermitRootLogin` 和 `PasswordAuthentication` 配置更改为 `yes`
+- 最后重启 ssh 服务 `systemctl restart sshd`
+
+
 
 ## 2.nginx 配置
 现在的服务器部署，基本上离不开 `nginx`，配置简单易用，对于个人开发者十分友好。
@@ -249,5 +259,6 @@ server {
     return 301  https://$server_name$request_uri;
 }
 ```
+
 
 以上就是本篇的全部内容，如有错误，欢迎指正~
