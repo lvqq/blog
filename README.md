@@ -19,6 +19,7 @@
 - Git
     - [常用Git操作的归纳总结](https://github.com/lvqq/blog-code/issues/26)
 - 工具和插件
+    - [MacOS Terminal 配置指南](https://github.com/lvqq/blog/issues/57)
     - [你不能错过的 VSCode 插件](https://github.com/lvqq/blog-code/issues/36)
 
 ## Samples
