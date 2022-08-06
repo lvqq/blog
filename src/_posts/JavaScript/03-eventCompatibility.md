@@ -1,7 +1,7 @@
 ---
 category: JavaScript
 tags:
-  - 兼容性
+  - 事件注册
 date: 2018-05-01
 title: 注册事件的兼容性处理
 vssue-title: 注册事件的兼容性处理

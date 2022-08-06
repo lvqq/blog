@@ -1,7 +1,5 @@
 ---
 category: Git
-tags:
-  - git
 date: 2018-09-03
 title: 常用Git操作的归纳总结
 vssue-title: 常用Git操作的归纳总结

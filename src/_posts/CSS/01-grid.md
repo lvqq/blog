@@ -1,8 +1,7 @@
 ---
 category: css
 tags:
-  - Grid
-  - 布局
+  - grid
 date: 2018-10-10
 title: Grid布局快速入门
 vssue-title: Grid布局快速入门

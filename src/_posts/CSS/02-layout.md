@@ -1,7 +1,5 @@
 ---
 category: css
-tags:
-  - 布局
 date: 2018-10-26
 title: 七种方法实现左侧固定右侧自适应布局
 vssue-title: 七种方法实现左侧固定右侧自适应布局

@@ -3,7 +3,6 @@ draft: true
 category: JavaScript
 tags:
   - react
-  - 组件
   - 翻译
 date: 2019-03-28
 title: '[译]React函数组件和类有什么不同？'

@@ -2,7 +2,7 @@
 category: 工具和插件
 tags:
   - macOS
-  - Terminal
+  - zsh
 date: 2022-07-31
 title: MacOS Terminal 配置指南
 vssue-title: MacOS Terminal 配置指南

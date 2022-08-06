@@ -2,7 +2,6 @@
 category: 工程化
 tags:
   - gulp
-  - 打包
 date: 2018-11-22
 title: 使用gulp实现前端自动化
 vssue-title: 使用gulp实现前端自动化

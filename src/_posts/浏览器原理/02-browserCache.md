@@ -1,8 +1,7 @@
 ---
 category: 浏览器原理
 tags:
-  - 浏览器
-  - 缓存
+  - HTTP 缓存
 date: 2020-01-20
 title: 浏览器缓存策略
 vssue-title: 浏览器缓存策略

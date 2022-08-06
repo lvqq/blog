@@ -1,7 +1,6 @@
 ---
 category: 工具和插件
 tags:
-  - 插件
   - VSCode
 date: 2020-06-03
 title: 你不能错过的 VSCode 插件
