@@ -9,7 +9,7 @@ vssue-title: MacOS Terminal 配置指南
 ---
 
 
-本文主要记录 macOS 下一些常见 Terminal 相关的软件包的安装流程
+本文主要归纳 macOS 下一些常见 Terminal 相关的软件配置，快速搭建本地开发环境，大部分内容已收纳至 [dotfiles](https://github.com/lvqq/dotfiles) 项目中，开箱即用，欢迎体验。
 
 <!-- more -->
 
@@ -72,8 +72,14 @@ plugins=(
 )
 ```
 
-## 5. php
-因为本人所使用 `Alfred workflow` 的部分插件依赖于 `php` 运行时，而 macOS 在 `12 Monterey` 版本之后不再默认安装 `php`，因此需要手动安装，相关命令如下：
+## 5. nvm
+`nvm` 是一款优秀的 `NodeJS` 版本管理工具，通过它你可以轻松地管理本地的 `NodeJS` 版本：
+``` bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash 
+```
+
+## 6. php
+因为个人使用的 `Alfred workflow` 的部分插件依赖于 `php` 运行时，而 macOS 在 `12 Monterey` 版本之后不再默认安装 `php`，因此需要手动安装，相关命令如下：
 ```bash
 brew install php@7.4
 ```
