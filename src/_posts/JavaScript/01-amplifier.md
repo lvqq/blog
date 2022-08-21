@@ -1,7 +1,5 @@
 ---
 category: JavaScript
-tags:
-  - 放大器
 date: 2017-12-06
 title: 放大器
 vssue-title: 放大器

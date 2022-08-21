@@ -14,14 +14,14 @@ vssue-title: 如何安全地执行用户的自定义 nodejs 脚本
 
 <!-- more -->
 
-# 用户脚本
+## 用户脚本
 用户脚本具有不可预测性的特点。
 - 在浏览器端，用户脚本可以直接获取到 cookie，localStorage 等信息；
 - 在 Node 端则可以执行退出进程、删除文件等危险操作，会有潜在的安全问题。
 
 因此我们默认认为用户提供的脚本内容是不可信任的。那么应该如何执行这样一段无法信任的脚本呢？
 
-# 如何执行
+## 如何执行
 以 node 环境为例，在不考虑安全的情况下，我们简单执行一段脚本一般有两种方式：
 
 ```javascript
@@ -37,7 +37,7 @@ console.log('process has exit by new Function')
 
 这里我们仅从执行环境的角度来考虑，脚本的语法分析与过滤则不在本文的讨论范围内。
 
-## 使用 web worker
+### 使用 web worker
 提到沙盒，我最先想到的就是 worker，那么在 worker 中去执行用户代码是否可行呢？看下面这个示例：
 
 ```javascript
@@ -70,10 +70,10 @@ if (isMainThread) {
 
 浏览器中也可以使用 web worker，虽然在 worker 线程中无法直接获取到 cookie, localStorage, DOM 等数据，但由于 postMessage 能够接收任务来源的信息，这会成为 XSS 攻击的潜在风险点。因此在浏览器端使用时需要在服务端对信息进行相应的输入过滤和清洗
 
-## 使用 child_process
+### 使用 child_process
 `child_process` 是 Nodejs 中创建的子进程，能够直接执行 shell 命令，使用 `child_process` 遇到的问题与 web worker 类似，就不展开了
 
-## 使用 vm 模块
+### 使用 vm 模块
 vm 是 Node 中的一个模块，可以在 v8 的虚拟机中运行你的代码，是一个沙箱隔离的环境，并且默认屏蔽了process, console, fs 等全局对象，有一定的安全性保障：
 ```javascript
 const vm = require('vm');
@@ -112,7 +112,7 @@ vm.runInNewContext('this.constructor.constructor("return process")().exit()');
 console.log('Never gets executed.');
 ```
 
-## vm2
+### vm2
 在社区中有许多解决方案用于隔离运行用户脚本，如 sandbox、 vm2、 jailed 等。相比较而言 vm2 在安全方面做了更多的工作，相对可靠些。vm2 主要利用 Proxy 进行了上下文同步，防止代码逃逸，实现了对于全局对象、内置模块的访问限制，并重写了 require 方法实现对于模块的访问管理。
 
 上面逃逸的例子在 vm2 中则被拦截了：
@@ -224,11 +224,11 @@ if (isMainThread) {
 }
 ```
 
-# 总结
+## 总结
 目前采用 worker 线程 + vm2 作为执行用户脚本的方案并加以优化，相较于其他方式来说似乎提供了一个更坚固的沙箱，但也不排除有未发现的新的安全隐患。总之，代码安全无小事，考虑再多也不为过~
 
 
-# 参考
+## 参考
 - [vm2](https://github.com/patriksimek/vm2)
 - [https://github.com/patriksimek/vm2/issues/180](https://github.com/patriksimek/vm2/issues/180)
 - [NodeJs - vm](https://nodejs.org/api/vm.html)
