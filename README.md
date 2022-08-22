@@ -25,10 +25,8 @@
 - [blog-samples](https://github.com/lvqq/blog-samples)
 
 ## Base
-- vue
 - vuepress
-- theme-meteorlxy
+- vuepress-theme-meteorlxy
 
 ## Plugins
-- [vuepress-plugin-click](https://github.com/lvqq/vuepress-plugin-click) 点击💖
 - [vuepress-plugin-rocket](https://github.com/lvqq/vuepress-plugin-rocket) 上升顶部🚀

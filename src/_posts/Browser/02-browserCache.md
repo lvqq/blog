@@ -1,5 +1,5 @@
 ---
-category: 浏览器原理
+category: Browser
 tags:
   - HTTP 缓存
 date: 2020-01-20

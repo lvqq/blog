@@ -1,5 +1,5 @@
 ---
-category: 工具和插件
+category: Tools
 tags:
   - VSCode
 date: 2020-06-03

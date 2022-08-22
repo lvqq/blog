@@ -95,7 +95,7 @@ const arr: Array<string> = []
 const tup: [string, number] = ['LiHua', 18]
 ```
 
-元祖中的选项还可以是可选的
+元组中的选项还可以是可选的
 ```typescript
 // 支持可选
 const tup1: [string, number?] = ['LiHua']
@@ -368,7 +368,7 @@ interface PropType {
     [key: string]: string
 }
 let prop: PropType
-prop = data1 // Error: Type 'Test2' is not assignable to type 'PropType'. Index signature for type 'string' is missing in type 'Test2'
+prop = data1 // Error: Type 'Test1' is not assignable to type 'PropType'. Index signature for type 'string' is missing in type 'Test1'
 prop = data2 // success
 ```
 因为只有当该类型的所有属性都已知并且可以对照该索引签名进行检查时，才允许将子集分配给该索引签名类型。而 `interface` 允许类型合并，所以它的最终类型是不确定的，并不一定是它定义时的类型；`type` 声明的类型时的索引签名是已知的

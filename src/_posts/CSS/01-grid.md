@@ -1,5 +1,5 @@
 ---
-category: css
+category: CSS
 tags:
   - grid
 date: 2018-10-10

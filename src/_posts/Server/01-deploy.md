@@ -1,8 +1,7 @@
 ---
-category: 服务端
+category: Server
 tags:
-  - nginx
-  - ssh
+  - Nginx
 date: 2021-02-17
 title: 从0到1实现简单部署
 vssue-title: 从0到1实现简单部署

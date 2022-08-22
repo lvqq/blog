@@ -1,5 +1,5 @@
 ---
-category: 浏览器原理
+category: Browser
 tags:
   - 跨域
 date: 2018-11-04

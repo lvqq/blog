@@ -1,5 +1,5 @@
 ---
-category: 工具和插件
+category: Tools
 tags:
   - macOS
   - zsh
