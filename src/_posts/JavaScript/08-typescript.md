@@ -58,15 +58,14 @@ demo = 1 // Error: Type 'number' is not assignable to type 'object'
 ```
 
 ### Object 与 {}
-在 `JavaScript` 里 `Object` 是所有原型链的最上层，在 `TypeScript` 里则表现为 `Object` 可以表示所有的类型， 而 `{}` 均表示所有非 `null` 和 `undefined` 的类型
+在 `JavaScript` 里 `Object` 是所有原型链的最上层，在 `TypeScript` 里则表现为 `Object` 可以表示所有的类型， 而 `{}` 均表示所有非 `null` 和 `undefined` 的类型，`null` 和 `undefined` 在 `strictNullChecks=false` 时才允许被赋值给 `Object` 和 `{}`
 ```typescript
 let demo1: Object
 demo1 = []
 demo1 = {}
 demo1 = 1
-// null, undefined 需要在 strictNullChecks=false 时才可以
-demo1 = null 
-demo1 = undefined 
+demo1 = null  // Error: Type 'null' is not assignable to type 'Object'
+demo1 = undefined  // Error: Type 'undefined' is not assignable to type 'Object'
 
 let demo2: {}
 demo2 = []
@@ -195,7 +194,7 @@ if (typeof str === 'string') {
 > 3. 不清楚具体类型是什么而使用 `any`：推荐声明时使用 `unknown` 来代替，在具体调用的地方再进行断言
 
 ### never
-表示不存在的类型，一般在抛出异常以及出现死循环的时候会出现，对于数组而言，定义的时候未指定类型，`TypeScript` 会将其视为 `never[]`
+表示不存在的类型，一般在抛出异常以及出现死循环的时候会出现：
 ```typescript
 // 1.抛出异常
 function test1(): never {
@@ -206,9 +205,6 @@ function test1(): never {
 function test2(): never {
     while(true) {}
 }
-
-// 3. 数组未定义类型
-const arr = []  // never[]
 ```
 `never` 也存在主动的使用场景，比如我们可以进行详细的类型检查，对穷举之后剩下的 else 条件分支中的变量设置类型为 `never`，这样一旦 `value` 发生了类型变化，而没有更新相应的类型判断的逻辑，则会产生报错提示
 ```typescript
@@ -744,7 +740,7 @@ type Extract<T, U> = T extends U ? T : never
 使用示例：
 ```typescript
 type Test = string | number
-type TestExclude = Extract<Test, string> // string
+type TestExtract = Extract<Test, string> // string
 ```
 
 ### NonNullable
@@ -756,7 +752,7 @@ type NonNullable<T> = T extends null | undefined ? never : T
 使用示例：
 ```typescript
 type Test = string | number | null | undefined
-type TestExclude = NonNullable<Test> // string | number
+type TestNonNullable = NonNullable<Test> // string | number
 ```
 
 ### Pick
@@ -808,7 +804,7 @@ type Parameters<T extends (...args: any) => any> = T extends (
 使用示例：
 ```typescript
 type Func = (param: string) => string[]
-type FuncReturn = Parameters<Func> // [param: string]
+type FuncParam = Parameters<Func> // [param: string]
 ```
 
 ### ReturnType
@@ -833,7 +829,7 @@ type FuncReturn = ReturnType<Func> // string[]
         /* 构建、工程化选项 */
 
         // baseUrl: 解析的根目录
-        "baseUrl": "src"
+        "baseUrl": "src",
         // target: 编译代码到目标 ECMAScript 版本，一般是 es5/es6
         "target": "es5", 
         // lib: 运行时环境支持的语法，默认与 tagert 的值相关联
