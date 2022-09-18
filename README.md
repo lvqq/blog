@@ -1,4 +1,5 @@
 ## Blogs
+- [快速从零开始搭建一个前端项目](https://github.com/lvqq/blog/issues/59)
 - [超详细的 TypeScript 入门总结](https://github.com/lvqq/blog/issues/58)
 - [MacOS Terminal 配置指南](https://github.com/lvqq/blog/issues/57)
 - [如何安全地执行用户的自定义 nodejs 脚本](https://github.com/lvqq/blog/issues/56)
