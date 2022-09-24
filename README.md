@@ -13,14 +13,6 @@
 - [七种方法实现左侧固定右侧自适应布局](https://github.com/lvqq/blog-code/issues/29)
 - [Grid布局快速入门](https://github.com/lvqq/blog-code/issues/28)
 - [常用Git操作的归纳总结](https://github.com/lvqq/blog-code/issues/26)
-- [注册事件的兼容性处理](https://github.com/lvqq/blog-code/issues/25)
-- [浅谈JS中的坐标获取](https://github.com/lvqq/blog-code/issues/24)
-- [放大器](https://github.com/lvqq/blog-code/issues/23)
-
-
-
-
-
 
 ## Samples
 - [blog-samples](https://github.com/lvqq/blog-samples)
