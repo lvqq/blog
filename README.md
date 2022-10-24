@@ -1,4 +1,5 @@
 ## Blogs
+- [pnpm 原理解析](https://github.com/lvqq/blog/issues/60)
 - [快速从零开始搭建一个前端项目](https://github.com/lvqq/blog/issues/59)
 - [超详细的 TypeScript 入门总结](https://github.com/lvqq/blog/issues/58)
 - [MacOS Terminal 配置指南](https://github.com/lvqq/blog/issues/57)
