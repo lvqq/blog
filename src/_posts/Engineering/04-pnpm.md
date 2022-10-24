@@ -86,7 +86,7 @@ node_modules
 幽灵依赖（Phantom dependencies）指的是没有显示声明在 `package.json` 中的依赖，却可以直接引用到对应的包，这个问题是由扁平化的结构产生的，会将依赖的依赖也至于 `node_modules` 的顶层，也就可以在项目中直接引用到。当某一天这个子依赖不再是引用包的依赖时，项目中的引用则会出现问题
 
 #### 分身问题
-NPM 分身（NPM doppelgangers）则指的是对于相同依赖的不同版本，由于 `hosit` 的机制，只会提升一个，其他版本则可能会被重复安装，还是上面的[例子](https://github.com/lvqq/blog-samples/tree/master/pnpm/03-npm-doppelgangers)，当依赖的 `demo-bar` 的依赖升级到 `v1.0.1` 时，作为 `demo-foo` 和 `demo-baz` 依赖的 `v1.0.0` 版本则以嵌套的形式被重复安装：
+NPM 分身（NPM doppelgangers）则指的是对于相同依赖的不同版本，由于 `hoist` 的机制，只会提升一个，其他版本则可能会被重复安装，还是上面的[例子](https://github.com/lvqq/blog-samples/tree/master/pnpm/03-npm-doppelgangers)，当依赖的 `demo-bar` 的依赖升级到 `v1.0.1` 时，作为 `demo-foo` 和 `demo-baz` 依赖的 `v1.0.0` 版本则以嵌套的形式被重复安装：
 ```
 node_modules
 └─ demo-bar // v1.0.1
@@ -109,9 +109,40 @@ node_modules
 ```
 
 ## pnpm 解题思路
-`pnpm` 首先将依赖安装到全局 `store`，然后通过 `symlbolic link` 和 `hard link` 来组织目录结构，将全局的依赖链接到项目中，将项目的直接依赖链接到 `node_modules` 的顶层，所有的依赖则平铺于 `node_modules/.pnpm` 目录下，实现了所有项目的依赖共享 `store` 的全局依赖，解决了幽灵依赖和 NPM 分身的问题
+`pnpm` 首先将依赖安装到全局 `store`，然后通过 `symbolic link` 和 `hard link` 来组织目录结构，将全局的依赖链接到项目中，将项目的直接依赖链接到 `node_modules` 的顶层，所有的依赖则平铺于 `node_modules/.pnpm` 目录下，实现了所有项目的依赖共享 `store` 的全局依赖，解决了幽灵依赖和 NPM 分身的问题
 
-一个依赖 `demo-foo@1.0.1` 和 `demo-baz@1.0.0` 的[例子](https://github.com/lvqq/blog-samples/tree/master/pnpm/04-pnpm)，`node_modules` 结构如下：
+### symbolic link 与 hard link
+
+链接是操作系统中文件共享的方式，其中 `symbolic link` 是符号链接，也称软链接，`hard link` 是硬链接，从在使用的角度看，二者没有什么区别，都支持读写，如果是可执行文件也可以直接执行，主要区别在于底层原理不太一样：
+
+![](https://img.chlorine.site/2022-10-23/04.png)
+
+#### hard link
+- 硬链接不会新建 `inode`（索引节点），源文件与硬链接指向同一个索引节点
+- 硬链接不支持目录，只支持文件级别，也不支持跨分区
+- 删除源文件和所有硬链接之后，文件才真正被删除
+
+#### symbolic link
+- 符号链接中存储的是源文件的路径，指向源文件，类似于 `Windows` 的快捷方式
+- 符号链接支持目录与文件，它与源文件是不同的文件，`inode` 值不一样，文件类型也不同，因此符号链接可以跨分区访问
+- 删除源文件后，符号链接依然存在，但是无法通过它访问到源文件
+
+#### 如何创建链接
+```bash
+# symbolic ink
+ln -s myfile mysymlink
+
+# hard link
+ln myfile myhardlink
+```
+
+### pnpm 实现
+在 pnpm 中，会将依赖安装到当前分区的 `<home dir>/.pnpm-store` 位置中，可以通过以下命令获得当前的 `store` 位置：
+```bash
+pnpm store path
+```
+
+然后利用 `hard link` 将所需的包从 `node_modules/.pnpm` 硬链接到 `store` 中，最后通过 `symbolic link` 将 `node_modules` 中的顶层依赖以及依赖的依赖符号链接到 `node_modules/.pnpm` 中，一个依赖 `demo-foo@1.0.1` 和 `demo-baz@1.0.0` 的[例子](https://github.com/lvqq/blog-samples/tree/master/pnpm/04-pnpm)，`node_modules` 结构如下：
 ```
 node_modules
 └─ .pnpm
@@ -133,38 +164,7 @@ node_modules
 └─ demo-foo -> ./pnpm/demo-baz@1.0.1/node_modules/demo-foo
 ```
 
-### symlbolic link 与 hard link
-
-链接是操作系统中文件共享的方式，其中 `symlbolic link` 是符号链接，也称软链接，`hard link` 是硬链接，从在使用的角度看，二者没有什么区别，都支持读写，如果是可执行文件也可以直接执行，主要区别在于底层原理不太一样：
-
-![](https://img.chlorine.site/2022-10-23/04.png)
-
-#### hard link
-- 硬链接不会新建 `inode`（索引节点），源文件与硬链接指向同一个索引节点
-- 硬链接不支持目录，只支持文件级别，也不支持跨分区
-- 删除源文件和所有硬链接之后，文件才真正被删除
-
-#### symlbolic link
-- 符号链接中存储的是源文件的路径，指向源文件，类似于 `Windows` 的快捷方式
-- 符号链接支持目录与文件，它与源文件是不同的文件，`inode` 值不一样，文件类型也不同，因此符号链接可以跨分区访问
-- 删除源文件后，符号链接依然存在，但是无法通过它访问到源文件
-
-#### 如何创建链接
-```bash
-# symlbolic ink
-ln -s myfile mysymlink
-
-# hard link
-ln myfile mysymlink
-```
-
-### pnpm 实现
-在 pnpm 中，会将依赖安装到当前分区的 `<home dir>/.pnpm-store` 位置中，可以通过以下命令获得当前的 `store` 位置：
-```bash
-pnpm store path
-```
-
-然后利用 `hard link` 将所需的包从 `node_modules/.pnpm` 硬链接到 `store` 中，最后通过 `symlbolic link` 将 `node_modules` 中的顶层依赖以及依赖的依赖符号链接到 `node_modules/.pnpm` 中，这里引用了官网的截图帮助你更好地理解 `symlbolic ink` 与 `hard link` 在项目结构中是如何组织的：
+这里引用了官网的截图帮助你更好地理解 `symbolic ink` 与 `hard link` 在项目结构中是如何组织的：
 
 ![](https://img.chlorine.site/2022-10-23/02.png)
 
@@ -173,7 +173,7 @@ pnpm store path
 
 ## 当前不适用的场景
 
-1. 由于 `symlbolic link` 在一些场景下有兼容性问题，目前 `Eletron` 以及 `labmda` 部署的应用上无法使用 `pnpm`，详见：[discussion](https://github.com/nodejs/node/discussions/37509)
+1. 由于 `symbolic link` 在一些场景下有兼容性问题，目前 `Eletron` 以及 `labmda` 部署的应用上无法使用 `pnpm`，详见：[discussion](https://github.com/nodejs/node/discussions/37509)
 
 可以通过在 `.npmrc` 中 `node-linker=hoisted` 可以创建一个没有符号链接的扁平的 `node_modules`，此时 `pnpm` 创建的目录结构将与 `npm/yarn` 类似
 
