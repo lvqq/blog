@@ -171,7 +171,7 @@ node_modules
 ## 其他能力
 `pnpm` 目前可以脱离 `Node.js` 的 `runtime` 去安装使用，还可以通过 `pnpm env` 来对 `Node.js` 版本进行管理，类似 `nvm`，与 `npm/yarn` 完整的功能比较详见：[feature-comparison](https://pnpm.io/feature-comparison)
 
-## 当前不适用的场景
+## pnpm 的局限性
 
 1. 由于 `symbolic link` 在一些场景下有兼容性问题，目前 `Eletron` 以及 `labmda` 部署的应用上无法使用 `pnpm`，详见：[discussion](https://github.com/nodejs/node/discussions/37509)
 
@@ -183,7 +183,23 @@ node_modules
 
 但是并不是所有的操作系统都支持，`pnpm` 默认会尝试使用 `clone`，如果不支持，则会退回至使用 `hard link`，你也可以通过在 `npmrc` 中指定 [package-import-method](https://pnpm.io/npmrc#package-import-method) 来手动设置包的引用方式
 
+## 其他工具
+
+- bun: [https://github.com/oven-sh/bun](https://github.com/oven-sh/bun)
+
+采用 `Zig` 写的一个 `JS runtime`，`bun` 也提供了包管理工具，但是 `bun` 会有一些兼容性问题
+
+- Volt：[https://github.com/dimensionhq/volt](https://github.com/dimensionhq/volt)
+
+利用 `Rust` 写的 `Node.js` 包管理器，速度极快，目前仍在 beta 阶段
+
+
+## 未来展望
+
+`pnpm` 很快，但是并不是所有的 `pnpm` 命令都很快，例如 `pnpm run` 比较慢，未来可能会使用 `Rust` 来写一些子命令的 cli wrapper，参见这个 [discussion](https://github.com/pnpm/pnpm/discussions/3419)
+
 ## 参考
+
 - [Flat node_modules is not the only way](https://pnpm.io/blog/2020/05/27/flat-node-modules-is-not-the-only-way)
 - [Symlinked node_modules structure](https://pnpm.io/symlinked-node-modules-structure)
 - [完整代码示例](https://github.com/lvqq/blog-samples/tree/master/pnpm)
