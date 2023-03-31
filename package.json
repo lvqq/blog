@@ -4,11 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "vuepress dev src",
-    "build": "vuepress build src --dest dist",
+    "start": "cross-env NODE_OPTIONS=--openssl-legacy-provider vuepress dev src",
+    "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider vuepress build src --dest dist",
     "connect": "./scripts/connect.sh",
     "certificate": "./scripts/certificate.sh",
     "upload": "pnpm build && ./scripts/upload.sh"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   },
   "author": "",
   "license": "ISC",
@@ -18,6 +21,7 @@
     "vuepress-theme-meteorlxy": "^1.9.0"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "vuepress": "^1.1.0"
   }
 }

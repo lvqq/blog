@@ -19,7 +19,7 @@ vssue-title: pnpm 原理解析
 ### 嵌套结构
 在 `npm@2` 的早期版本中，对应 `Node.js 4.x` 及以前的版本，`node_modules` 在安装时是嵌套结构
 
-一个简单的[例子](https://github.com/lvqq/blog-samples/tree/master/pnpm/01-npm%402)，`demo-foo` 和 `demo-baz` 中均依赖 `example-bar`，在同时安装 `demo-foo` 和 `demo-baz` 时会生成如下的 `node_modules` 结构：
+一个简单的[例子](https://github.com/lvqq/blog-samples/tree/master/pnpm/01-npm%402)，`demo-foo` 和 `demo-baz` 中均依赖 `demo-bar`，在同时安装 `demo-foo` 和 `demo-baz` 时会生成如下的 `node_modules` 结构：
 ```
 node_modules
 └─ demo-foo
@@ -168,6 +168,35 @@ node_modules
 
 ![](https://img.chlorine.site/2022-10-23/02.png)
 
+pnpm 对于链接的实际应用，以下是相关[源码](https://github.com/pnpm/pnpm/blob/main/fs/indexed-pkg-importer/src/index.ts#L19~L43)：
+```typescript
+function createImportPackage (packageImportMethod?: 'auto' | 'hardlink' | 'copy' | 'clone' | 'clone-or-copy') {
+  // this works in the following way:
+  // - hardlink: hardlink the packages, no fallback
+  // - clone: clone the packages, no fallback
+  // - auto: try to clone or hardlink the packages, if it fails, fallback to copy
+  // - copy: copy the packages, do not try to link them first
+  switch (packageImportMethod ?? 'auto') {
+  case 'clone':
+    packageImportMethodLogger.debug({ method: 'clone' })
+    return clonePkg
+  case 'hardlink':
+    packageImportMethodLogger.debug({ method: 'hardlink' })
+    return hardlinkPkg.bind(null, linkOrCopy)
+  case 'auto': {
+    return createAutoImporter()
+  }
+  case 'clone-or-copy':
+    return createCloneOrCopyImporter()
+  case 'copy':
+    packageImportMethodLogger.debug({ method: 'copy' })
+    return copyPkg
+  default:
+    throw new Error(`Unknown package import method ${packageImportMethod as string}`)
+  }
+}
+```
+
 ## 其他能力
 `pnpm` 目前可以脱离 `Node.js` 的 `runtime` 去安装使用，还可以通过 `pnpm env` 来对 `Node.js` 版本进行管理，类似 `nvm`，与 `npm/yarn` 完整的功能比较详见：[feature-comparison](https://pnpm.io/feature-comparison)
 
@@ -184,14 +213,18 @@ node_modules
 但是并不是所有的操作系统都支持，`pnpm` 默认会尝试使用 `clone`，如果不支持，则会退回至使用 `hard link`，你也可以通过在 `npmrc` 中指定 [package-import-method](https://pnpm.io/npmrc#package-import-method) 来手动设置包的引用方式
 
 ## 其他工具
+- bun: https://github.com/oven-sh/bun
 
-- bun: [https://github.com/oven-sh/bun](https://github.com/oven-sh/bun)
+    - 采用 `Zig` 写的一个 `JS runtime`，`bun` 也提供了包管理工具，但是 `bun` 会有一些兼容性问题
 
-采用 `Zig` 写的一个 `JS runtime`，`bun` 也提供了包管理工具，但是 `bun` 会有一些兼容性问题
 
-- Volt：[https://github.com/dimensionhq/volt](https://github.com/dimensionhq/volt)
+-   Volt：https://github.com/dimensionhq/volt
 
-利用 `Rust` 写的 `Node.js` 包管理器，速度极快，目前仍在 beta 阶段
+    - 利用 `Rust` 写的 `Node.js` 包管理器，速度极快，目前仍在 beta 阶段
+
+-   tnpm: https://github.com/cnpm/npminstall
+
+    -   来自 2022 SEE Conf 的[演讲](https://www.yuque.com/seeconf/2022/slide#GxZbi)，利用 Filesystem in Userspace([FUSE](https://en.wikipedia.org/wiki/Filesystem_in_Userspace)) 和 [OverlayFS](https://en.wikipedia.org/wiki/OverlayFS) 的特性来实现虚拟映射目录
 
 
 ## 未来展望
@@ -202,4 +235,5 @@ node_modules
 
 - [Flat node_modules is not the only way](https://pnpm.io/blog/2020/05/27/flat-node-modules-is-not-the-only-way)
 - [Symlinked node_modules structure](https://pnpm.io/symlinked-node-modules-structure)
+- [In-depth of tnpm rapid mode - how we managed to be 10 second faster than pnpm](https://dev.to/atian25/in-depth-of-tnpm-rapid-mode-how-could-we-fast-10s-than-pnpm-3bpp)
 - [完整代码示例](https://github.com/lvqq/blog-samples/tree/master/pnpm)

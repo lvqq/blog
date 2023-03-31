@@ -1,4 +1,10 @@
 ## Blogs
+
+In English:
+- [How does pnpm work](https://dev.to/chlorine/how-does-pnpm-work-5mh)
+- [Getting started with creating a frontend project quickly](https://dev.to/chlorine/getting-started-with-creating-a-frontend-project-quickly-1b0i)
+
+In Chinese:
 - [pnpm 原理解析](https://github.com/lvqq/blog/issues/60)
 - [快速从零开始搭建一个前端项目](https://github.com/lvqq/blog/issues/59)
 - [超详细的 TypeScript 入门总结](https://github.com/lvqq/blog/issues/58)
@@ -23,4 +29,4 @@
 - vuepress-theme-meteorlxy
 
 ## Plugins
-- [vuepress-plugin-rocket](https://github.com/lvqq/vuepress-plugin-rocket) 上升顶部🚀
+- [vuepress-plugin-rocket](https://github.com/lvqq/vuepress-plugin-rocket) Bottom-To-Top🚀
