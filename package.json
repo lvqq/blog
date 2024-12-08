@@ -9,7 +9,7 @@
     "start": "pnpm dev",
     "build:dev": "cross-env NODE_OPTIONS=--openssl-legacy-provider vuepress build src --dest dist",
     "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider vuepress build src --dest dist",
-    "postbuild": "mv ./dist/* /var/www/html/"
+    "postbuild": "bash -c '[ -z \"$VERCEL\" ] && mv -f ./dist/* /var/www/html/blog/'"
   },
   "engines": {
     "node": ">=18.0.0"

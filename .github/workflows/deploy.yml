@@ -1,0 +1,31 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up SSH
+      uses: webfactory/ssh-agent@v0.5.3
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    - name: Run deployment script
+      env:
+        SERVER_IP: ${{ secrets.SERVER_IP }}
+      run: |
+        ssh -o StrictHostKeyChecking=no deploy@$SERVER_IP << 'EOF'
+        export PATH="$PATH:/home/deploy/.nvm/versions/node/v20.18.1/bin"
+        cd /home/deploy/blog
+        git pull origin main
+        pnpm install
+        pnpm run build
+        EOF
