@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "packageManager": "pnpm@9.15.0",
   "scripts": {
-    "start": "cross-env NODE_OPTIONS=--openssl-legacy-provider vuepress dev src",
+    "dev": "cross-env NODE_OPTIONS=--openssl-legacy-provider vuepress dev src",
+    "start": "pnpm dev",
+    "build:dev": "cross-env NODE_OPTIONS=--openssl-legacy-provider vuepress build src --dest dist",
     "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider vuepress build src --dest dist",
-    "connect": "./scripts/connect.sh",
-    "certificate": "./scripts/certificate.sh",
-    "upload": "pnpm build && ./scripts/upload.sh"
+    "postbuild": "mv ./dist/* /var/www/html/"
   },
   "engines": {
     "node": ">=18.0.0"
