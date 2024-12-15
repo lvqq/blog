@@ -2,7 +2,6 @@
 category: JavaScript
 tags:
   - NodeJS
-  - vm
 date: 2021-09-21
 title: 如何安全地执行用户的自定义 nodejs 脚本
 vssue-title: 如何安全地执行用户的自定义 nodejs 脚本

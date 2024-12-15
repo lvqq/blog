@@ -21,12 +21,7 @@ In Chinese:
 - [Grid布局快速入门](https://github.com/lvqq/blog-code/issues/28)
 - [常用Git操作的归纳总结](https://github.com/lvqq/blog-code/issues/26)
 
-## Samples
-- [blog-samples](https://github.com/lvqq/blog-samples)
-
-## Base
-- vuepress
-- vuepress-theme-meteorlxy
-
-## Plugins
-- [vuepress-plugin-rocket](https://github.com/lvqq/vuepress-plugin-rocket) Bottom-To-Top🚀
+## About
+- Samples: [blog-samples](https://github.com/lvqq/blog-samples)
+- Plugins: [bottom-to-top🚀](https://github.com/lvqq/vuepress-plugin-rocket)
+- Theme: [vuepress-theme-meteorlxy](https://github.com/meteorlxy/vuepress-theme-meteorlxy)

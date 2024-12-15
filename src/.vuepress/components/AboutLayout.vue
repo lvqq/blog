@@ -4,9 +4,9 @@
       <Content class="content" />
       <!-- <Friends /> -->
     </div>
-    <div class="main-div">
+    <!-- <div class="main-div">
       <Vssue title="message-about" />
-    </div>
+    </div> -->
   </div>
 </template>
 

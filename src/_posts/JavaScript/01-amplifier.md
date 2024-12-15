@@ -1,4 +1,5 @@
 ---
+draft: true
 category: JavaScript
 date: 2017-12-06
 title: 放大器

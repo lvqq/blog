@@ -1,8 +1,6 @@
 ---
 category: JavaScript
 date: 2019-09-16
-tags:
-  - 深拷贝
 title: 深拷贝实践
 vssue-title: 深拷贝实践
 # top: 1

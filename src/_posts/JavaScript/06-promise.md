@@ -1,8 +1,6 @@
 ---
 category: JavaScript
 date: 2020-04-01
-tags:
-  - promise
 title: 如何实现一个 promise
 vssue-title: 如何实现一个 promise
 ---

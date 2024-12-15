@@ -1,7 +1,5 @@
 ---
 category: Engineering
-tags:
-  - gulp
 date: 2018-11-22
 title: 使用gulp实现前端自动化
 vssue-title: 使用gulp实现前端自动化

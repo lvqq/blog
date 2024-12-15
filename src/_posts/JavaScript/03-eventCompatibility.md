@@ -1,4 +1,5 @@
 ---
+draft: true
 category: JavaScript
 date: 2018-05-01
 title: 注册事件的兼容性处理

@@ -1,5 +1,7 @@
 ---
 category: Engineering
+tags:
+  - pnpm
 date: 2022-10-23
 title: pnpm 原理解析
 vssue-title: pnpm 原理解析

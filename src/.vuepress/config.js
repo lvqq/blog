@@ -8,7 +8,7 @@ module.exports = {
   head: [
     ['script', {}, 'var _hmt = _hmt || [];(function() {if(location.host !== "www.chlorine.site") return;var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?d8d60e7ae4a779698e2d60a30ff11fa4";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();'],
     ['link', { rel: 'icon', href: 'https://img.chlorine.site/head.jpg' }],
-    ['link', { rel: 'stylesheet', href: 'https://at.alicdn.com/t/font_952822_eipr4f6r8la.css'}],
+    ['link', { rel: 'stylesheet', href: 'https://at.alicdn.com/t/c/font_952822_dgtfvniygmi.css'}],
   ],
   plugins: [
     'vuepress-plugin-click',
@@ -32,8 +32,8 @@ module.exports = {
       // 个人简介
       description: `
         <p class="side-desc side-desc-word">Sometimes ever, sometimes never</p>
-        <p class="side-desc"><i class="iconfont icon-yonghu" style="color:rgb(22, 155, 250)"></i> FE</p>
-        <p class="side-desc"><i class="iconfont icon-aixin1" style="color:rgb(244, 110, 101)"></i> Coding、Running、Reading</p>
+        <p class="side-desc"><i class="iconfont icon-skill" style="color:rgb(22, 155, 250)"></i> Front-end, Python learning</p>
+        <p class="side-desc"><i class="iconfont icon-aixin1" style="color:rgb(244, 110, 101)"></i> Coding, Cats</p>
         <div class="side-contacts">
           ${contacts.join('')}
         </div>
@@ -90,7 +90,7 @@ module.exports = {
       poweredByTheme: false,
 
       // 添加自定义 footer (支持 HTML)
-      custom: 'Copyright © 2017-2022 <a href="https://www.chlorine.site/" target="_blank">chlorine</a> | <a href="http://beian.miit.gov.cn/">鄂ICP备18005280号</a>',
+      custom: 'Copyright © 2017-2024 <a href="https://www.chlorine.site/" target="_blank">chlorine</a> | <a href="http://beian.miit.gov.cn/">鄂ICP备18005280号</a>',
     },
 
     // 是否显示文章的最近更新时间
@@ -104,17 +104,18 @@ module.exports = {
     ],
 
     // 评论配置，参考下方 [页面评论] 章节
-    comments: {
-      owner: 'lvqq',
-      repo: 'blog',
-      clientId: 'e4da136aba26cf86d754',
-      clientSecret: '7f180cf22c126d80991bfe2df6a84f6d66cc67b5',
-      autoCreateIssue: false,
-      locale: 'zh-CN',
-      perPage: 5,
-      prefix: '[Blog] ',
-      labels: ['blog'],
-    },
+    // comments: {
+    //   owner: 'lvqq',
+    //   repo: 'blog',
+    //   clientId: 'e4da136aba26cf86d754',
+    //   clientSecret: '7f180cf22c126d80991bfe2df6a84f6d66cc67b5',
+    //   autoCreateIssue: false,
+    //   locale: 'zh-CN',
+    //   perPage: 5,
+    //   prefix: '[Blog] ',
+    //   labels: ['blog'],
+    // },
+    comments: false,
 
     // 分页配置
     pagination: {

@@ -1,7 +1,6 @@
 ---
 category: Tools
 tags:
-  - macOS
   - zsh
 date: 2022-07-31
 title: MacOS Terminal 配置指南
