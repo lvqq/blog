@@ -104,18 +104,18 @@ module.exports = {
     ],
 
     // 评论配置，参考下方 [页面评论] 章节
-    // comments: {
-    //   owner: 'lvqq',
-    //   repo: 'blog',
-    //   clientId: 'e4da136aba26cf86d754',
-    //   clientSecret: '7f180cf22c126d80991bfe2df6a84f6d66cc67b5',
-    //   autoCreateIssue: false,
-    //   locale: 'zh-CN',
-    //   perPage: 5,
-    //   prefix: '[Blog] ',
-    //   labels: ['blog'],
-    // },
-    comments: false,
+    comments: {
+      owner: 'lvqq',
+      repo: 'blog',
+      clientId: 'e4da136aba26cf86d754',
+      clientSecret: '7f180cf22c126d80991bfe2df6a84f6d66cc67b5',
+      autoCreateIssue: false,
+      locale: 'zh-CN',
+      perPage: 5,
+      prefix: '[Blog] ',
+      labels: ['blog'],
+    },
+    // comments: false,
 
     // 分页配置
     pagination: {
