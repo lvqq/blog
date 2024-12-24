@@ -11,7 +11,7 @@ vssue-title: 全栈项目全流程上线、部署、运维实践
 
 本文主要记录了笔者个人全栈项目上线、部署、运维的整个流程实践，仅供参考。话不多说，先上一个效果图：
 
-![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/c5ea4fb4147e49ae99cb556a8fb3fa50~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgY2hsb3JpbmU=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMTQzMzQxODg5MzYzNzQ1NCJ9&rk3s=e9ecf3d6&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1734881284&x-orig-sign=EBhJ8KkNzmsXJ4JWA2pb%2Bfjh53M%3D)
+![](https://img.chlorine.site/2024-12-21/01.png)
 
 <!-- more -->
 
@@ -630,7 +630,7 @@ sudo systemctl status loki
 #### 可视化查询
 在 `Grafana` 的 `DataSource` 中导入 `Loki` 数据源，即可在 `Logs` 中进行可视化查询。一个示例：
 
-![image-1.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/b4a055d5ecc545e095aad3542100e8b3~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgY2hsb3JpbmU=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMTQzMzQxODg5MzYzNzQ1NCJ9\&rk3s=e9ecf3d6\&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018\&x-orig-expires=1734881284\&x-orig-sign=30EwB9RBOvFya0R470FBjegWD%2FU%3D)
+![](https://img.chlorine.site/2024-12-21/02.png)
 
 ### 告警
 在 `Grafana` 看板中可以方便地配置告警规则，并支持多种通知方式：
@@ -659,7 +659,7 @@ sudo systemctl restart grafana-server
 ```
 
 测试邮件能否收到：
-![image-2.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/c2b90ee1febd41fca3aba4190c58d0f7~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgY2hsb3JpbmU=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMTQzMzQxODg5MzYzNzQ1NCJ9\&rk3s=e9ecf3d6\&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018\&x-orig-expires=1734881284\&x-orig-sign=ahgCO927M%2FdHeVIBgXFL8AV24jQ%3D)
+![](https://img.chlorine.site/2024-12-21/03.png)
 
 ## 总结
 随着环境和服务配置的完成，我们还通过引入的持续交付（CD）流程来实现了自动化部署，提高了开发和运维的效率。进一步地，我们通过监控、日志和告警的有效管理，能够实时掌握服务的运行状况并及时处理潜在问题。至此，已经搭建了一套相对完整的服务器环境和服务运维体系。

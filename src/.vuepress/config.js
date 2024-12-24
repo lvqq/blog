@@ -90,7 +90,7 @@ module.exports = {
       poweredByTheme: false,
 
       // 添加自定义 footer (支持 HTML)
-      custom: 'Copyright © 2017-2024 <a href="https://www.chlorine.site/" target="_blank">chlorine</a> | <a href="http://beian.miit.gov.cn/">鄂ICP备18005280号</a>',
+      custom: 'Copyright © 2017-2024 <a href="https://www.chlorine.site/" target="_blank">chlorine</a> | <a href="http://beian.miit.gov.cn/">沪ICP备2024107248号</a>',
     },
 
     // 是否显示文章的最近更新时间
