@@ -33,6 +33,8 @@ sudo apt install git
 ssh-keygen -t ed25519 -C "youremail@email.com"
 ```
 
+已生成的 ssh key 位于目录 `~/.ssh/` 下
+
 ### MySQL
 #### 安装
 由于 Debain 的 apt 包中没有 `mysql-server`，仅支持 `mariadb-server`，这里选择手动安装的方式。下载 MySQL 5.7，或者前往[官网](https://downloads.mysql.com/archives/community/)寻找合适的版本：
@@ -227,9 +229,9 @@ sudo systemctl restart nginx
 ```nginx
 server {
     listen 80;
-    server_name www.example.com;
+    server_name www.myhost.com;
 
-    root /root/projects/example/dist;
+    root /root/projects/myhost/dist;
     index index.html index.htm;
 
     location / {
@@ -246,7 +248,7 @@ sudo apt install certbot python3-certbot-nginx
 
 根据提示完成配置，将自动下载证书，完成 nginx 配置并重启：
 ```bash
-sudo certbot --nginx -d api.myhost.com
+sudo certbot --nginx -d *.myhost.com
 ```
 
 证书有效期只有 3 个月，可以通过脚本实现自动续签，参考 [certbot-dns-aliyun](https://github.com/justjavac/certbot-dns-aliyun)：
@@ -283,6 +285,44 @@ crontab -e
 ```bash
 grep CRON /var/log/syslog
 ```
+
+查询证书过期时间：
+```bash
+sudo certbot certificates
+```
+
+新增一级域名可直接复用已申请的泛域名证书，以新增 `admin.myhost.com` 为例：
+```nginx
+server {
+    server_name admin.myhost.com;
+
+    root /root/projects/admin/dist;
+    index index.html index.htm;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    # 配置泛域名证书，需要替换为对应的地址
+    listen 443 ssl;
+    ssl_certificate /etc/letsencrypt/live/myhost.com-0001/fullchain.pem; 
+    ssl_certificate_key /etc/letsencrypt/live/myhost.com-0001/privkey.pem; 
+    include /etc/letsencrypt/options-ssl-nginx.conf; 
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; 
+}
+
+# http 跳转 https
+server {
+    if ($host = h5.myhost.com) {
+        return 301 https://$host$request_uri;
+    }
+
+    listen 80;
+    server_name admin.myhost.com;
+    return 404;
+}
+```
+
 
 ### CD
 以 `Github Workflow` 为例，实现自动化部署。新建 `.github/workflows/deploy.yml`：
@@ -435,6 +475,8 @@ Group=mysqld_exporter
 Type=simple
 ExecStart=/usr/local/bin/mysqld_exporter \
   --config.my-cnf /etc/mysqld_exporter/.my.cnf
+Restart = on-failure
+RestartSec = 5
 
 [Install]
 WantedBy=multi-user.target
@@ -442,8 +484,12 @@ WantedBy=multi-user.target
 
 启动服务：
 ```bash
+# 启用服务关联（设置 WantedBy 用于开机自启）
+sudo systemctl enable mysqld_exporter.service
+
 sudo systemctl start mysqld_exporter
 ```
+
 
 
 #### 数据拉取 & 存储
@@ -514,7 +560,7 @@ sudo chown prometheus:prometheus /usr/local/bin/prometheus
 sudo chown prometheus:prometheus /usr/local/bin/promtool
 ```
 
-创建 `systemd` 服务文件，新建 `/etc/systemd/system/prometheus.service` 文件：
+创建 `systemd` 服务文件，新建 `/etc/systemd/system/prometheus.service` 文件，设置数据保存时间 7d：
 ```ini
 [Unit]
 Description=Prometheus
@@ -527,7 +573,10 @@ Group=prometheus
 Type=simple
 ExecStart=/usr/local/bin/prometheus \
   --config.file=/etc/prometheus/prometheus.yml \
-  --storage.tsdb.path=/var/lib/prometheus/
+  --storage.tsdb.path=/var/lib/prometheus/ \
+  --storage.tsdb.retention.time=7d
+Restart = on-failure
+RestartSec = 5
 
 [Install]
 WantedBy=multi-user.target
@@ -535,6 +584,8 @@ WantedBy=multi-user.target
 
 启动服务：
 ```bash
+sudo systemctl enable prometheus.service
+
 sudo systemctl start prometheus
 ```
 

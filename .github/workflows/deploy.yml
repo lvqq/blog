@@ -27,5 +27,6 @@ jobs:
         cd /home/deploy/blog
         git pull origin main
         pnpm install
+        export NODE_OPTIONS="--max-old-space-size=1024"
         pnpm run build
         EOF
