@@ -130,6 +130,15 @@ FLUSH PRIVILEGES;
 ```bash
 [mysqld]
 bind-address = 0.0.0.0
+
+# 设置字符集
+character_set_server = utf8mb4
+collation_server = utf8mb4_unicode_ci
+```
+
+创建数据库
+```bash
+CREATE DATABASE your_database;
 ```
 
 然后重启 MySQL 服务：
@@ -323,6 +332,42 @@ server {
 }
 ```
 
+### Keep-alive
+设置 `keep-alive` 以实现连接复用，降低出现 `socket hang up` 情况的频率。
+
+默认浏览器中会携带 `Connection: keep-alive` 的 Request Header，NestJS 本身也是默认开启 `keep-alive` 的，但是超时时间默认为 5s，需要手动调整一下：
+```js
+const app = await NestFactory.create(AppModule);
+const server = app.getHttpServer();
+
+server.keepAliveTimeout = 60 * 1000
+server.headersTimeout = 65 * 1000
+
+app.listen(process.env.PORT ?? 3000);
+```
+
+更新 Nginx 配置以使 `keep-alive` 生效，需要保证 客户端 -> Nginx, Nginx -> Server 两条链路都生效：
+```nginx
+upstream nestjs_cluster {
+    server 127.0.0.1:3000;
+    keepalive 32;  # 每个worker保持的空闲连接数
+}
+
+server {
+    server_name api.host.com;
+
+    location / {
+        proxy_pass http://nestjs_cluster;
+        proxy_http_version 1.1; # 指定 http 1.1
+        proxy_set_header Connection ""; # 将客户端传来的 Connection 置空
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+```
+最后可以通过 `netstat -tn | grep :3000` 来进行验证，如果短时间内重复请求后出现 `ESTABLISHED` 则表示连接进行了复用
 
 ### CD
 以 `Github Workflow` 为例，实现自动化部署。新建 `.github/workflows/deploy.yml`：
@@ -425,7 +470,7 @@ pm2 install pm2-metrics
 ```bash
 wget https://github.com/prometheus/mysqld_exporter/releases/download/v0.16.0/mysqld_exporter-0.16.0.linux-amd64.tar.gz
 tar xzvf mysqld_exporter-0.16.0.linux-amd64.tar.gz
-cd mysqld_exporter-0.16.0.linux-amd64.tar.gz
+cd mysqld_exporter-0.16.0.linux-amd64
 sudo mv mysqld_exporter /usr/local/bin/
 ```
 
@@ -501,7 +546,6 @@ wget https://github.com/prometheus/prometheus/releases/download/v3.0.1/prometheu
 解压缩：
 ```bash
 tar xvfz prometheus-3.0.1.linux-amd64.tar.gz
-
 cd prometheus-3.0.1.linux-amd64
 ```
 
@@ -518,7 +562,7 @@ scrape_configs:
 
   - job_name: 'app'
     static_configs:
-      - targets: ['localhost:4000']
+      - targets: ['localhost:3000']
 ```
 
 启动 prometheus 服务：
@@ -529,7 +573,16 @@ scrape_configs:
 如果服务有如下报错：
 > Failed to determine correct type of scrape target." component="scrape manager" scrape_pool=pm2 target="http://localhost:9209/metrics?fallback_scrape_protocol=Prometheus" content_type="" fallback_media_type="" err="non-compliant scrape target sending blank Content-Type and no fallback_scrape_protocol specified for target
 
-参考 [issue](https://github.com/saikatharryc/pm2-prometheus-exporter/issues/94#issuecomment-2499899266) 来给 `exporter.js` 添加 header，然后重启：
+参考 [issue](https://github.com/saikatharryc/pm2-prometheus-exporter/issues/94#issuecomment-2499899266) 来给 `pm2-metrics` 的 `exporter.js` 添加 header，一般位于`~/.pm2/modules/pm2-metrics/node_modules/pm2-metrics/`目录下：
+```js
+// ...
+case '/metrics': {
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  return metrics().then(data => res.end(data));
+}
+```
+
+然后重启：
 ```bash
 pm2 restart pm2-metrics
 ```
@@ -589,6 +642,84 @@ sudo systemctl enable prometheus.service
 sudo systemctl start prometheus
 ```
 
+#### 多实例 metrics 收集
+当服务通过 `pm2` 的 `cluser` 模式部署时，会遇到 metrics 收集的指标不准确的问题，原因是每次收集时获取的是随机某个实例的 metrics 数据而非所有实例的数据，因此一种做法是将每个实例的 metrics 都单独暴露端口，由 `Prometheus` 去做批量拉取，以 NestJS 为例，添加独立的 metrics 模块：
+```js
+// metrics.controler.ts
+import { Controller, Get, Res } from '@nestjs/common';
+import { register } from 'prom-client';
+import { Response } from 'express';
+
+@Controller()
+export class MetricsController {
+  @Get('/metrics')
+  async getMetrics(@Res() res: Response) {
+    res.set('Content-Type', register.contentType);
+    res.send(await register.metrics());
+  }
+}
+
+// metrics.module.ts
+import { Module } from '@nestjs/common';
+import { MetricsController } from './metrics.controller';
+
+@Module({
+  controllers: [MetricsController],
+})
+
+export class MetricsModule {}
+```
+
+在 `main.ts` 中添加独立的 app 来启动 metrics 服务：
+```js
+async function bootstrapMainApp() {
+  // ...
+}
+
+async function bootstrapMetricsApp() {
+  const app = await NestFactory.create(MetricsModule);
+  // 设置独立的 metrics 端口
+  const metricsPort = 4000 + parseInt(process.env.NODE_APP_INSTANCE || '0');
+  await app.listen(metricsPort);
+}
+
+async function bootstrap() {
+  await bootstrapMainApp()
+
+  // 只有PM2集群实例才启动 metrics 服务
+  if (process.env.NODE_APP_INSTANCE !== undefined) {
+    await bootstrapMetricsApp();
+  }
+};
+
+bootstrap()
+```
+
+然后更改 pm2 的执行配置：
+```js
+module.exports = {
+  apps: [
+    {
+      // ...
+      instance_var: 'NODE_APP_INSTANCE',
+    }
+  ]
+};
+```
+
+最后更新 `Prometheus` 的配置抓取相应端口号的数据即可实现多实例 metrics 数据的收集，以4个实例为例：
+```yaml
+scrape_configs:
+  # ...
+  - job_name: 'app'
+    static_configs:
+      - targets:
+          - 'localhost:4000'
+          - 'localhost:4001'
+          - 'localhost:4002'
+          - 'localhost:4003'
+```
+
 #### 数据可视化
 通过 `Grafana` 消费 `Prometheus` 的监控数据，搭建可视化监控看板。安装 `Grafana`：
 ```bash
@@ -625,6 +756,13 @@ pm2 install pm2-logrotate
 # 设置日志文件名
 pm2 set pm2-logrotate:dateFormat YYYY-MM-DD_HH-00-00
 pm2 set pm2-logrotate:rotateInterval "0 * * * *"
+# 最多保留 24 份（最近一天的日志）
+pm2 set pm2-logrotate:retain 24
+```
+
+获取当前 `pm2-logrotate` 的配置：
+```bash
+pm2 get pm2-logrotate
 ```
 
 使用自定义的 logger 来实现 ORM 日志按小时划分：
@@ -657,14 +795,33 @@ positions:
 clients:
 - url: http://localhost:3100/loki/api/v1/push
 
+# 收集 Nodejs 日志
 scrape_configs:
 - job_name: myjob
   static_configs:
-  - targets:
-      - localhost
-    labels:
-      job: myapp
-      __path__: /my/log/path/*.log
+    - targets:
+        - localhost
+      labels:
+        job: myapp
+        __path__: /my/log/path/pm2/*.log
+  # 过滤重复的日志文件
+  pipeline_stages:
+    - match:
+        selector: '{job="myapp"}'
+        action: keep
+        stages:
+          - drop:
+              source: filename
+              expression: ".*(out-[0-9]*|error-[0-9]*|__[0-9]{4}-[0-9]{2}-[0-9]{2}_.*)\\.log$$"
+
+# 收集 orm 日志
+- job_name: mysqld
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: mysql
+          __path__: /my/log/path/orm/*.log
 ```
 
 重启服务：
