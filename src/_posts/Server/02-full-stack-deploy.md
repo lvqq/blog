@@ -249,6 +249,8 @@ server {
 }
 ```
 
+通过 `nginx -t` 可以检查当前 `Nginx` 配置是否有语法错误
+
 ### HTTPS 配置
 通过 certbot 申请 SSL 证书，安装对应 pkg：
 ```bash
